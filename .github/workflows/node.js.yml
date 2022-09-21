@@ -13,14 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js v16.14.2
-        uses: actions/setup-node@v3
-        with:
-          node-version: v16.14.2
-          cache: 'npm'
-      - run: npm i
-      - run: npm run build
+      
 
   deploy:
     environment:
@@ -28,8 +21,14 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+     - uses: actions/checkout@v3
+      - name: Use Node.js v16.14.2
+        uses: actions/setup-node@v3
+        with:
+          node-version: v16.14.2
+          cache: 'npm'
+      - run: npm i
+      - run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
