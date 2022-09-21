@@ -1,0 +1,15 @@
+body {
+	background-color: #fff;
+	font-family: 'PingFang';
+	&::-webkit-scrollbar {
+		width: 0;
+		height: 0;
+		background: transparent;
+		display: none;
+	}
+}
+
+.view {
+	padding: 12px;
+	background: #3498db;
+}
