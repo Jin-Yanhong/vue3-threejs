@@ -1,6 +1,6 @@
 import AppMain from '@/layout/components/AppMain.vue';
 import NProgress from 'nprogress';
-import { createRouter, createWebHistory, RouteLocationNormalized, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHashHistory, RouteLocationNormalized, RouteRecordRaw } from 'vue-router';
 
 import 'nprogress/nprogress.css';
 
@@ -52,7 +52,7 @@ export const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-    history: createWebHistory(process.env.BASE_URL),
+    history: createWebHashHistory(process.env.BASE_URL),
     routes,
 });
 
