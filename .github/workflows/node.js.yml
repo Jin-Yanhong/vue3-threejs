@@ -13,7 +13,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      
 
   deploy:
     environment:
@@ -21,7 +20,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-     - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       - name: Use Node.js v16.14.2
         uses: actions/setup-node@v3
         with:
