@@ -7,10 +7,6 @@ import { defineComponent } from '@vue/runtime-core';
 
 export default defineComponent({
 	name: 'App',
-	setup() {
-		return {};
-	},
-	beforeDestroy() {},
 });
 </script>
 <style lang="scss"></style>

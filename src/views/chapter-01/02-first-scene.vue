@@ -9,7 +9,6 @@ export default defineComponent({
 		const containerRef = ref<HTMLDivElement>();
 		const scene = new THREE.Scene();
 		const WebGLRenderer = new THREE.WebGLRenderer();
-
 		return {
 			containerRef,
 			scene,
@@ -24,13 +23,16 @@ export default defineComponent({
 	},
 	methods: {
 		init() {
+			const innerWidth = window.innerWidth - 300;
+			const innerHeight = window.innerHeight - 58;
+
 			// create a camera, which defines where we're looking at.
-			const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+			const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 1000);
 
 			// create a render and set the size
 
-			this.WebGLRenderer.setClearColor(new THREE.Color(0xeeeeee));
-			this.WebGLRenderer.setSize(window.innerWidth - 24, window.innerHeight - 84);
+			this.WebGLRenderer.setClearColor(new THREE.Color(0x000000));
+			this.WebGLRenderer.setSize(innerWidth, innerHeight);
 
 			// show axes in the screen
 			const axes = new THREE.AxesHelper(20);

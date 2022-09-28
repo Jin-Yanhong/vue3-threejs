@@ -1,4 +1,4 @@
-import AppMain from '@/layout/components/AppMain.vue';
+import Layout from '@/layout/index.vue';
 import NProgress from 'nprogress';
 import { createRouter, createWebHashHistory, RouteLocationNormalized, RouteRecordRaw } from 'vue-router';
 
@@ -6,36 +6,59 @@ import 'nprogress/nprogress.css';
 
 export const routes: Array<RouteRecordRaw> = [
     {
-        path: '/Introduction',
-        name: 'Introduction',
-        component: () => import('@/views/Introduction.vue'),
-        meta: {
-            title: 'Introduction',
-            cache: true,
-            show: false,
-        },
-    },
-    {
         path: '/chapter-01',
         name: 'Views',
-        component: AppMain,
+        component: Layout,
         meta: {
             title: 'Chapter - 01',
-            index: 'Odometer',
+            icon: 'Folder',
             cache: true,
             show: true,
         },
         children: [
             {
-                path: '1',
-                name: 'chapter-01-1',
+                path: '2',
+                name: '02-first-scene',
                 meta: {
-                    title: '起个标题',
-                    icon: 'PieChart',
+                    title: '02-first-scene',
+                    icon: 'Document',
                     cache: true,
                     show: true,
                 },
-                component: () => import('@/views/chapter-01/1.vue'),
+                component: () => import('@/views/chapter-01/02-first-scene.vue'),
+            },
+            {
+                path: '3',
+                name: '03-materials-light',
+                meta: {
+                    title: '03-materials-light',
+                    icon: 'Document',
+                    cache: true,
+                    show: true,
+                },
+                component: () => import('@/views/chapter-01/03-materials-light.vue'),
+            },
+            {
+                path: '4',
+                name: '04-materials-light-animation',
+                meta: {
+                    title: '04-materials-light-animation',
+                    icon: 'Document',
+                    cache: true,
+                    show: true,
+                },
+                component: () => import('@/views/chapter-01/04-materials-light-animation.vue'),
+            },
+            {
+                path: '5',
+                name: '05-control-gui',
+                meta: {
+                    title: '05-control-gui',
+                    icon: 'Document',
+                    cache: true,
+                    show: true,
+                },
+                component: () => import('@/views/chapter-01/05-control-gui.vue'),
             },
         ],
     },
@@ -44,7 +67,7 @@ export const routes: Array<RouteRecordRaw> = [
     {
         path: '/:pathMatch(.*)*',
         name: 'redirect',
-        redirect: '/Introduction',
+        redirect: '/chapter-01/2',
         meta: {
             show: false,
         },
