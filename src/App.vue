@@ -1,12 +1,12 @@
 <template>
-	<router-view />
-	<keep-alive></keep-alive>
+  <router-view />
+  <keep-alive></keep-alive>
 </template>
 <script lang="ts">
-import { defineComponent } from '@vue/runtime-core';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-	name: 'App',
+  name: 'App',
 });
 </script>
 <style lang="scss"></style>

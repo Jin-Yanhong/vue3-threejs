@@ -4,6 +4,7 @@
  * @author Simone Manini / http://daron1337.github.io
  * @author Luca Antiga 	/ http://lantiga.github.io
  */
+import * as THREE from 'three';
 
 THREE.TrackballControls = function ( object, domElement ) {
 

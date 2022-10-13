@@ -1,8 +1,8 @@
 {
 	"semi": true,
-	"tabWidth": 4,
+	"tabWidth": 2,
 	"printWidth": 360,
-	"useTabs": true,
+	"useTabs": false,
 	"quoteProps": "as-needed",
 	"bracketSpacing": true,
 	"singleQuote": true,
@@ -18,10 +18,10 @@
 			}
 		},
 		{
-			"files": ["*.ts", "*.tsx", "*.js"],
+			"files": ["*.ts", "*.tsx", "*.js", "*.vue"],
 			"options": {
 				"semi": true,
-				"tabWidth": 4,
+				"tabWidth": 2,
 				"useTabs": false,
 				"quoteProps": "as-needed",
 				"singleQuote": true,
