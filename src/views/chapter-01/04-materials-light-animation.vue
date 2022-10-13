@@ -137,6 +137,8 @@ export default defineComponent({
 
     depose() {
       this.WebGLRenderer.dispose();
+      const panelGroup = document.querySelector("#panelGroup")
+      document.body.removeChild(panelGroup)
     },
   },
 });

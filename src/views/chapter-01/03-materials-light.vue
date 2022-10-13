@@ -4,7 +4,7 @@
 <script lang="ts">
 import * as THREE from 'three';
 import { defineComponent, ref } from 'vue';
-window.THREE = THREE;
+
 export default defineComponent({
   setup() {
     const containerRef = ref<HTMLDivElement>();
@@ -121,4 +121,6 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>

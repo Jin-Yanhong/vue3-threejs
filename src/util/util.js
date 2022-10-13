@@ -3,6 +3,7 @@ import * as THREE from 'three';
 function Stats() {
   var mode = 0;
   var container = document.createElement('div');
+  container.setAttribute('id', 'panelGroup');
   container.style.cssText = 'position:fixed;top:59px;left:300px;cursor:pointer;opacity:0.9;z-index:10000';
   container.addEventListener(
     'click',
