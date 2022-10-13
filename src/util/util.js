@@ -1,3 +1,5 @@
+import * as THREE from 'three';
+
 function Stats() {
   var mode = 0;
   var container = document.createElement('div');

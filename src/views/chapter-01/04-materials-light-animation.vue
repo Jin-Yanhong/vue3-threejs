@@ -2,8 +2,6 @@
   <div class="view" ref="containerRef"></div>
 </template>
 <script>
-import '@/libs/three/controls/TrackballControls';
-
 import { initStats } from "@/util/util";
 import * as THREE from 'three';
 import { defineComponent, ref } from 'vue';

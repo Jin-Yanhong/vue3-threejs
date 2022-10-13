@@ -1,12 +1,16 @@
 <template>
   <div class="view" ref="containerRef"></div>
 </template>
-<script lang="ts">
+<script>
+import { initStats } from "@/util/util";
+import * as dat from 'dat.gui';
 import * as THREE from 'three';
+import TrackballControls from 'three-trackballcontrols';
 import { defineComponent, ref } from 'vue';
+
 export default defineComponent({
   setup() {
-    const containerRef = ref<HTMLDivElement>();
+    const containerRef = ref();
     const scene = new THREE.Scene();
     const WebGLRenderer = new THREE.WebGLRenderer();
     return {
@@ -23,6 +27,9 @@ export default defineComponent({
   },
   methods: {
     init() {
+      // add performance panel
+      const stats = initStats();
+
       // create a camera, which defines where we're looking at.
       const innerWidth = window.innerWidth - 300;
       const innerHeight = window.innerHeight - 58;
@@ -34,18 +41,12 @@ export default defineComponent({
 
       this.WebGLRenderer.setClearColor(new THREE.Color(0x000000));
       this.WebGLRenderer.setSize(innerWidth, innerHeight);
-
-      // renderer.shadowMap.enabled = true;
-
-      // createTree(scene);
-      // createHouse(scene);
-      // createGroundPlane(scene);
-      // createBoundingWall(scene);
+      this.WebGLRenderer.shadowMap.enabled = true;
 
       // create a cube
       const cubeGeometry = new THREE.BoxGeometry(4, 4, 4);
       const cubeMaterial = new THREE.MeshLambertMaterial({
-        color: 0xff0000,
+        color: 0xff0000
       });
       const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
       cube.castShadow = true;
@@ -59,7 +60,7 @@ export default defineComponent({
 
       const sphereGeometry = new THREE.SphereGeometry(4, 20, 20);
       const sphereMaterial = new THREE.MeshLambertMaterial({
-        color: 0x7777ff,
+        color: 0x7777ff
       });
       const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 
@@ -72,7 +73,7 @@ export default defineComponent({
       // create the ground plane
       const planeGeometry = new THREE.PlaneGeometry(60, 20);
       const planeMaterial = new THREE.MeshLambertMaterial({
-        color: 0xaaaaaa,
+        color: 0xaaaaaa
       });
       const plane = new THREE.Mesh(planeGeometry, planeMaterial);
 
@@ -109,15 +110,55 @@ export default defineComponent({
       this.scene.add(ambienLight);
 
       // add the output of the this.WebGLRenderer to the html element
-      (this.containerRef as HTMLDivElement).appendChild(this.WebGLRenderer.domElement);
 
       // render the scene
       this.WebGLRenderer.render(this.scene, camera);
+
+      this.containerRef.appendChild(this.WebGLRenderer.domElement);
+
+      let step = 0;
+
+      const controls = new function () {
+        this.rotationSpeed = 0.02;
+        this.bouncingSpeed = 0.03;
+      };
+
+      const gui = new dat.GUI();
+      gui.add(controls, 'rotationSpeed', 0, 0.5);
+      gui.add(controls, 'bouncingSpeed', 0, 0.5);
+
+
+      // attach them here, since appendChild needs to be called first
+      const trackballControls = new TrackballControls(camera, this.WebGLRenderer.domElement);
+      const clock = new THREE.Clock();
+
+      const renderScene = () => {
+        trackballControls.update(clock.getDelta());
+        stats.update();
+
+        // rotate the cube around its axes
+        cube.rotation.x += controls.rotationSpeed;
+        cube.rotation.y += controls.rotationSpeed;
+        cube.rotation.z += controls.rotationSpeed;
+
+        // bounce the sphere up and down
+        step += controls.bouncingSpeed;
+        sphere.position.x = 20 + (10 * (Math.cos(step)));
+        sphere.position.y = 2 + (10 * Math.abs(Math.sin(step)));
+
+        // render using requestAnimationFrame
+        requestAnimationFrame(renderScene);
+        this.WebGLRenderer.render(this.scene, camera);
+      }
+      renderScene();
     },
+
     depose() {
       this.WebGLRenderer.dispose();
     },
   },
 });
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>
