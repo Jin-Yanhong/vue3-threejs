@@ -2,7 +2,7 @@
   <div class="view" ref="containerRef"></div>
 </template>
 <script>
-import { initStats } from "@/util/util";
+import { initStats } from '@/util/util';
 import * as dat from 'dat.gui';
 import * as THREE from 'three';
 import TrackballControls from 'three-trackballcontrols';
@@ -19,7 +19,7 @@ export default defineComponent({
       containerRef,
       scene,
       WebGLRenderer,
-      gui
+      gui,
     };
   },
   mounted() {
@@ -46,37 +46,10 @@ export default defineComponent({
       this.WebGLRenderer.setSize(innerWidth, innerHeight);
       this.WebGLRenderer.shadowMap.enabled = true;
 
-      // create a cube
-      const cubeGeometry = new THREE.BoxGeometry(4, 4, 4);
-      const cubeMaterial = new THREE.MeshLambertMaterial({
-        color: 0xff0000
-      });
-      const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-      cube.castShadow = true;
-
-      // position the cube
-      cube.position.x = -4;
-      cube.position.y = 2;
-      cube.position.z = 0;
-
-      // add the cube to the scene
-
-      const sphereGeometry = new THREE.SphereGeometry(4, 20, 20);
-      const sphereMaterial = new THREE.MeshLambertMaterial({
-        color: 0x7777ff
-      });
-      const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-
-      // position the sphere
-      sphere.position.x = 20;
-      sphere.position.y = 4;
-      sphere.position.z = 2;
-      sphere.castShadow = true;
-
       // create the ground plane
       const planeGeometry = new THREE.PlaneGeometry(60, 20);
       const planeMaterial = new THREE.MeshLambertMaterial({
-        color: 0xaaaaaa
+        color: 0xaaaaaa,
       });
       const plane = new THREE.Mesh(planeGeometry, planeMaterial);
 
@@ -86,8 +59,6 @@ export default defineComponent({
       plane.receiveShadow = true;
 
       // add the objects
-      this.scene.add(cube);
-      this.scene.add(sphere);
       this.scene.add(plane);
 
       // position and point the camera to the center of the scene
@@ -97,18 +68,16 @@ export default defineComponent({
       camera.lookAt(this.scene.position);
 
       // add spotlight for the shadows
-      const spotLight = new THREE.SpotLight(0xffffff);
-      spotLight.position.set(-40, 40, -15);
+      const spotLight = new THREE.SpotLight(0xffffff, 1.2, 150, 120);
+      spotLight.position.set(-40, 60, -10);
       spotLight.castShadow = true;
-      spotLight.shadow.mapSize = new THREE.Vector2(1024, 1024);
-      spotLight.shadow.camera.far = 130;
-      spotLight.shadow.camera.near = 40;
+      this.scene.add(spotLight);
 
       // If you want a more detailled shadow you can increase the
       // mapSize used to draw the shadows.
-      // spotLight.shadow.mapSize = new THREE.Vector2(1024, 1024);
+      spotLight.shadow.mapSize = new THREE.Vector2(1024, 1024);
       this.scene.add(spotLight);
-
+      //
       const ambienLight = new THREE.AmbientLight(0x353535);
       this.scene.add(ambienLight);
 
@@ -119,17 +88,52 @@ export default defineComponent({
 
       this.containerRef.appendChild(this.WebGLRenderer.domElement);
 
-      let step = 0;
+      const _this = this;
+      const controls = {
+        rotationSpeed: 0.02,
+        numberOfObjects: _this.scene.children.length,
+        removeCube: function () {
+          var allChildren = _this.scene.children;
+          var lastObject = allChildren[allChildren.length - 1];
+          if (lastObject instanceof THREE.Mesh) {
+            _this.scene.remove(lastObject);
+            this.numberOfObjects = _this.scene.children.length;
+          }
+        },
 
-      const controls = new function () {
-        this.rotationSpeed = 0.02;
-        this.bouncingSpeed = 0.03;
+        addCube: function () {
+          var cubeSize = Math.ceil(Math.random() * 3);
+          var cubeGeometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
+          var cubeMaterial = new THREE.MeshLambertMaterial({
+            color: Math.random() * 0xffffff,
+          });
+          var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+          cube.castShadow = true;
+          cube.name = 'cube-' + _this.scene.children.length;
+
+          // position the cube randomly in the scene
+
+          cube.position.x = -30 + Math.round(Math.random() * planeGeometry.parameters.width);
+          cube.position.y = Math.round(Math.random() * 5);
+          cube.position.z = -20 + Math.round(Math.random() * planeGeometry.parameters.height);
+
+          // add the cube to the scene
+          _this.scene.add(cube);
+          this.numberOfObjects = _this.scene.children.length;
+        },
+
+        outputObjects: function () {
+          console.log(_this.scene.children);
+        },
       };
 
       // add variables to guiCcontrals
-      this.gui.add(controls, 'rotationSpeed', 0, 0.5);
-      this.gui.add(controls, 'bouncingSpeed', 0, 0.5);
 
+      this.gui.add(controls, 'rotationSpeed', 0, 0.5);
+      this.gui.add(controls, 'addCube');
+      this.gui.add(controls, 'removeCube');
+      this.gui.add(controls, 'outputObjects');
+      this.gui.add(controls, 'numberOfObjects').listen();
 
       // attach them here, since appendChild needs to be called first
       const trackballControls = new TrackballControls(camera, this.WebGLRenderer.domElement);
@@ -139,32 +143,27 @@ export default defineComponent({
         trackballControls.update(clock.getDelta());
         stats.update();
 
-        // rotate the cube around its axes
-        cube.rotation.x += controls.rotationSpeed;
-        cube.rotation.y += controls.rotationSpeed;
-        cube.rotation.z += controls.rotationSpeed;
-
-        // bounce the sphere up and down
-        step += controls.bouncingSpeed;
-        sphere.position.x = 20 + (10 * (Math.cos(step)));
-        sphere.position.y = 2 + (10 * Math.abs(Math.sin(step)));
-
+        this.scene.traverse(function (e) {
+          if (e instanceof THREE.Mesh && e != plane) {
+            e.rotation.x += controls.rotationSpeed;
+            e.rotation.y += controls.rotationSpeed;
+            e.rotation.z += controls.rotationSpeed;
+          }
+        });
         // render using requestAnimationFrame
         requestAnimationFrame(renderScene);
         this.WebGLRenderer.render(this.scene, camera);
-      }
+      };
       renderScene();
     },
 
     depose() {
       this.WebGLRenderer.dispose();
-      this.gui.destroy()
-      const panelGroup = document.querySelector("#panelGroup")
-      document.body.removeChild(panelGroup)
+      this.gui.destroy();
+      const panelGroup = document.querySelector('#panelGroup');
+      document.body.removeChild(panelGroup);
     },
   },
 });
 </script>
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
