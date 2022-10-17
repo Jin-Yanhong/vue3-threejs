@@ -4,18 +4,18 @@ export class Stats {
     fpsPanel;
     msPanel;
     memPanel;
-    constructor() {
+    constructor () {
         this.mode = 0;
         this.container = document.createElement('div');
         this.container.setAttribute('id', 'panelGroup');
         this.container.style.cssText = 'position:fixed;top:0;left:300px;cursor:pointer;opacity:0.9;z-index:10000';
         this.container.addEventListener(
             'click',
-            event => {
+            (event) => {
                 event.preventDefault();
                 this.showPanel(++this.mode % this.container.children.length);
             },
-            false
+            false,
         );
 
         let beginTime = (performance || Date).now();
@@ -63,12 +63,12 @@ export class Stats {
         };
     }
 
-    addPanel(panel) {
+    addPanel (panel) {
         this.container.appendChild(panel.dom);
         return panel;
     }
 
-    showPanel(id) {
+    showPanel (id) {
         if (this.container) {
             for (let i = 0; i < this.container.children.length; i++) {
                 this.container.children[i].style.display = i === id ? 'block' : 'none';
