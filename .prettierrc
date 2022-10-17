@@ -1,34 +1,42 @@
 {
-	"semi": true,
-	"tabWidth": 2,
-	"printWidth": 360,
-	"useTabs": false,
-	"quoteProps": "as-needed",
-	"bracketSpacing": true,
-	"singleQuote": true,
-	"bracketSameLine": false,
-	"endOfLine": "crlf",
-	"arrowParens": "avoid",
-	"overrides": [
-		{
-			"files": ["*.yml"],
-			"options": {
-				"tabWidth": 2,
-				"useTabs": false
-			}
-		},
-		{
-			"files": ["*.ts", "*.tsx", "*.js", "*.vue"],
-			"options": {
-				"semi": true,
-				"tabWidth": 2,
-				"useTabs": false,
-				"quoteProps": "as-needed",
-				"singleQuote": true,
-				"bracketSpacing": true,
-				"bracketSameLine": false,
-				"printWidth": 360
-			}
-		}
-	]
+    "semi": true,
+    "tabWidth": 4,
+    "printWidth": 360,
+    "useTabs": false,
+    "quoteProps": "as-needed",
+    "bracketSpacing": true,
+    "singleQuote": true,
+    "bracketSameLine": false,
+    "endOfLine": "crlf",
+    "arrowParens": "avoid",
+    "overrides": [
+        {
+            "files": ["*.yml"],
+            "options": {
+                "tabWidth": 2,
+                "useTabs": false
+            }
+        },
+        {
+            "files": ["*.ts", "*.tsx", "*.js", "*.vue"],
+            "options": {
+                "semi": true,
+                "tabWidth": 4,
+                "printWidth": 360,
+                "useTabs": false,
+                "quoteProps": "as-needed",
+                "bracketSpacing": true,
+                "singleQuote": true,
+                "bracketSameLine": false,
+                "endOfLine": "crlf",
+                "arrowParens": "avoid"
+            }
+        },
+        {
+            "files": [".eslintrc.js"],
+            "options": {
+                "quoteProps": "consistent"
+            }
+        }
+    ]
 }

@@ -7,32 +7,32 @@ import chapter01 from './modules/chapter01';
 import chapter02 from './modules/chapter02';
 
 export const routes: Array<RouteRecordRaw> = [
-  chapter01,
-  chapter02,
-  // 匹配不到页面返回 dashboard
-  {
-    path: '/:pathMatch(.*)*',
-    name: 'redirect',
-    redirect: '/chapter-01/2',
-    meta: {
-      show: false,
+    chapter01,
+    chapter02,
+    // 匹配不到页面返回 dashboard
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'redirect',
+        redirect: '/chapter-01/2',
+        meta: {
+            show: false,
+        },
     },
-  },
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(process.env.BASE_URL),
-  routes,
+    history: createWebHashHistory(process.env.BASE_URL),
+    routes,
 });
 
 router.beforeEach(async (to: RouteLocationNormalized, from: RouteLocationNormalized, next) => {
-  NProgress.start();
-  next();
-  NProgress.done();
+    NProgress.start();
+    next();
+    NProgress.done();
 });
 
 router.afterEach((to: RouteLocationNormalized) => {
-  NProgress.done();
-  document.title = 'Vue3 💕 Three.js' + ' | ' + to.meta?.title;
+    NProgress.done();
+    document.title = 'Vue3 💕 Three.js' + ' | ' + to.meta?.title;
 });
 export default router;
