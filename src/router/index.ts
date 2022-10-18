@@ -5,10 +5,12 @@ import 'nprogress/nprogress.css';
 
 import chapter01 from './modules/chapter01';
 import chapter02 from './modules/chapter02';
+import chapter03 from './modules/chapter03';
 
 export const routes: Array<RouteRecordRaw> = [
     chapter01,
     chapter02,
+    chapter03,
     // 匹配不到页面返回 dashboard
     {
         path: '/:pathMatch(.*)*',

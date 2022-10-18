@@ -60,12 +60,45 @@ const chapter02: RouteRecordRaw = {
             path: '5',
             name: '05-custom-geometry',
             meta: {
-                title: '05-custom-geometry',
+                title: '05-custom-geometry TODO',
                 icon: 'Document',
                 cache: true,
                 show: true,
             },
             component: () => import('@/views/chapter-02/05-custom-geometry.vue'),
+        },
+        {
+            path: '6',
+            name: '06-mesh-properties',
+            meta: {
+                title: '06-mesh-properties',
+                icon: 'Document',
+                cache: true,
+                show: true,
+            },
+            component: () => import('@/views/chapter-02/06-mesh-properties.vue'),
+        },
+        {
+            path: '7',
+            name: '07-both-cameras',
+            meta: {
+                title: '07-both-cameras',
+                icon: 'Document',
+                cache: true,
+                show: true,
+            },
+            component: () => import('@/views/chapter-02/07-both-cameras.vue'),
+        },
+        {
+            path: '8',
+            name: '08-cameras-lookat',
+            meta: {
+                title: '08-cameras-lookat',
+                icon: 'Document',
+                cache: true,
+                show: true,
+            },
+            component: () => import('@/views/chapter-02/08-cameras-lookat.vue'),
         },
     ],
 };
