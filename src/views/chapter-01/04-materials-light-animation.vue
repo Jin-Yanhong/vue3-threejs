@@ -2,7 +2,7 @@
     <div class="view" ref="containerRef"></div>
 </template>
 <script>
-import { initStats } from '@/util/util';
+import { initStats } from '@/util';
 import * as THREE from 'three';
 import { defineComponent, ref } from 'vue';
 
