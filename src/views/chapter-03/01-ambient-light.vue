@@ -9,7 +9,7 @@ import TrackballControls from 'three-trackballcontrols';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
-    setup() {
+    setup () {
         const containerRef = ref();
         const scene = new THREE.Scene();
         const WebGLRenderer = new THREE.WebGLRenderer();
@@ -21,14 +21,14 @@ export default defineComponent({
             gui,
         };
     },
-    mounted() {
+    mounted () {
         this.init();
     },
-    beforeUnmount() {
+    beforeUnmount () {
         this.depose();
     },
     methods: {
-        init() {
+        init () {
             const stats = initStats();
 
             const innerWidth = window.innerWidth - 300;
@@ -88,13 +88,13 @@ export default defineComponent({
             };
             renderScene();
         },
-        depose() {
+        depose () {
             this.WebGLRenderer.dispose();
             this.gui.destroy();
             const panelGroup = document.querySelector('#panelGroup');
             document.body.removeChild(panelGroup);
         },
-        createTree(scene) {
+        createTree (scene) {
             const trunk = new THREE.BoxGeometry(1, 8, 1);
             const leaves = new THREE.SphereGeometry(4);
 
@@ -103,13 +103,13 @@ export default defineComponent({
                 trunk,
                 new THREE.MeshPhongMaterial({
                     color: 0x8b4513,
-                })
+                }),
             );
             const leavesMesh = new THREE.Mesh(
                 leaves,
                 new THREE.MeshPhongMaterial({
                     color: 0x00ff00,
-                })
+                }),
             );
 
             // position the trunk. Set y to half of height of trunk
@@ -124,7 +124,7 @@ export default defineComponent({
             this.scene.add(trunkMesh);
             this.scene.add(leavesMesh);
         },
-        createBoundingWall(scene) {
+        createBoundingWall (scene) {
             const wallLeft = new THREE.BoxGeometry(70, 2, 2);
             const wallRight = new THREE.BoxGeometry(70, 2, 2);
             const wallTop = new THREE.BoxGeometry(2, 2, 50);
@@ -150,7 +150,7 @@ export default defineComponent({
             this.scene.add(wallTopMesh);
         },
 
-        createGroundPlane(scene) {
+        createGroundPlane (scene) {
             // create the ground plane
             const planeGeometry = new THREE.PlaneGeometry(70, 50);
             const planeMaterial = new THREE.MeshPhongMaterial({
@@ -168,7 +168,7 @@ export default defineComponent({
             scene.add(plane);
         },
 
-        createHouse(scene) {
+        createHouse (scene) {
             const roof = new THREE.ConeGeometry(5, 4);
             const base = new THREE.CylinderGeometry(5, 5, 6);
             // create the mesh
@@ -176,13 +176,13 @@ export default defineComponent({
                 roof,
                 new THREE.MeshPhongMaterial({
                     color: 0x8b7213,
-                })
+                }),
             );
             const baseMesh = new THREE.Mesh(
                 base,
                 new THREE.MeshPhongMaterial({
                     color: 0xffe4c4,
-                })
+                }),
             );
 
             roofMesh.position.set(25, 8, 0);

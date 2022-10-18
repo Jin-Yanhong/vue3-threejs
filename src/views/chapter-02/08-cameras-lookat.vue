@@ -9,16 +9,16 @@ import TrackballControls from 'three-trackballcontrols';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
-    setup() {
+    setup () {
         const containerRef = ref();
         const scene = new THREE.Scene();
         const WebGLRenderer = new THREE.WebGLRenderer();
-        let camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
         const trackballControls = new TrackballControls(camera, WebGLRenderer.domElement);
         const gui = new dat.GUI();
         const stats = initStats();
         const clock = new THREE.Clock();
-        let step = ref(0);
+        const step = ref(0);
         return {
             containerRef,
             scene,
@@ -31,14 +31,14 @@ export default defineComponent({
             step,
         };
     },
-    mounted() {
+    mounted () {
         this.init();
     },
-    beforeUnmount() {
+    beforeUnmount () {
         this.depose();
     },
     methods: {
-        init() {
+        init () {
             const innerWidth = window.innerWidth - 300;
             const innerHeight = window.innerHeight;
 
@@ -130,7 +130,7 @@ export default defineComponent({
 
                 this.step += 0.02;
                 if (this.camera instanceof THREE.Camera) {
-                    var x = 10 + 100 * Math.sin(this.step);
+                    const x = 10 + 100 * Math.sin(this.step);
                     this.camera.lookAt(new THREE.Vector3(x, 10, 0));
                     lookAtMesh.position.copy(new THREE.Vector3(x, 10, 0));
                 }
@@ -140,14 +140,14 @@ export default defineComponent({
             };
             renderScene();
         },
-        depose() {
+        depose () {
             this.WebGLRenderer.dispose();
             this.gui.destroy();
             const panelGroup = document.querySelector('#panelGroup');
             document.body.removeChild(panelGroup);
             this.trackballControls.dispose();
         },
-        initTrackballControls(camera, renderer) {
+        initTrackballControls (camera, renderer) {
             const trackballControls = new TrackballControls(camera, renderer.domElement);
             trackballControls.rotateSpeed = 1.0;
             trackballControls.zoomSpeed = 1.2;

@@ -5,7 +5,7 @@
 import * as THREE from 'three';
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
-    setup() {
+    setup () {
         const containerRef = ref<HTMLDivElement>();
         const scene = new THREE.Scene();
         const WebGLRenderer = new THREE.WebGLRenderer();
@@ -15,14 +15,14 @@ export default defineComponent({
             WebGLRenderer,
         };
     },
-    mounted() {
+    mounted () {
         this.init();
     },
-    beforeUnmount() {
+    beforeUnmount () {
         this.depose();
     },
     methods: {
-        init() {
+        init () {
             const innerWidth = window.innerWidth - 300;
             const innerHeight = window.innerHeight;
 
@@ -77,7 +77,7 @@ export default defineComponent({
 
             this.WebGLRenderer.render(this.scene, camera);
         },
-        depose() {
+        depose () {
             this.WebGLRenderer.dispose();
         },
     },

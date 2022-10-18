@@ -11,7 +11,7 @@ import { createMultiMaterialObject } from 'three/examples/jsm/utils/SceneUtils';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
-    setup() {
+    setup () {
         const containerRef = ref();
         const scene = new THREE.Scene();
         const WebGLRenderer = new THREE.WebGLRenderer();
@@ -21,14 +21,14 @@ export default defineComponent({
             WebGLRenderer,
         };
     },
-    mounted() {
+    mounted () {
         this.init();
     },
-    beforeUnmount() {
+    beforeUnmount () {
         this.depose();
     },
     methods: {
-        init() {
+        init () {
             const innerWidth = window.innerWidth - 300;
             const innerHeight = window.innerHeight;
 
@@ -80,11 +80,11 @@ export default defineComponent({
             };
             renderScene();
         },
-        depose() {
+        depose () {
             this.WebGLRenderer.dispose();
         },
 
-        addGeometries() {
+        addGeometries () {
             const geoms = [];
             geoms.push(new THREE.CylinderGeometry(1, 4, 4));
 

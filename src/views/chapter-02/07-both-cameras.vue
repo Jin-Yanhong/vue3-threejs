@@ -9,11 +9,11 @@ import TrackballControls from 'three-trackballcontrols';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
-    setup() {
+    setup () {
         const containerRef = ref();
         const scene = new THREE.Scene();
         const WebGLRenderer = new THREE.WebGLRenderer();
-        let camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
         const trackballControls = new TrackballControls(camera, WebGLRenderer.domElement);
         const gui = new dat.GUI();
         const stats = initStats();
@@ -29,14 +29,14 @@ export default defineComponent({
             clock,
         };
     },
-    mounted() {
+    mounted () {
         this.init();
     },
-    beforeUnmount() {
+    beforeUnmount () {
         this.depose();
     },
     methods: {
-        init() {
+        init () {
             const innerWidth = window.innerWidth - 300;
             const innerHeight = window.innerHeight;
 
@@ -120,14 +120,14 @@ export default defineComponent({
 
             this.renderScene();
         },
-        depose() {
+        depose () {
             this.WebGLRenderer.dispose();
             this.gui.destroy();
             const panelGroup = document.querySelector('#panelGroup');
             document.body.removeChild(panelGroup);
             this.trackballControls.dispose();
         },
-        initTrackballControls(camera, renderer) {
+        initTrackballControls (camera, renderer) {
             const trackballControls = new TrackballControls(camera, renderer.domElement);
             trackballControls.rotateSpeed = 1.0;
             trackballControls.zoomSpeed = 1.2;
@@ -139,7 +139,7 @@ export default defineComponent({
             trackballControls.keys = [65, 83, 68];
             return trackballControls;
         },
-        renderScene() {
+        renderScene () {
             this.trackballControls.update(this.clock.getDelta());
             this.stats.update();
             requestAnimationFrame(this.renderScene);
