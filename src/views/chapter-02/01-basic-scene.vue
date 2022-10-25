@@ -2,14 +2,14 @@
     <div class="view" ref="containerRef"></div>
 </template>
 <script>
-import { initStats } from '@/util';
+import {initStats} from '@/util';
 import * as dat from 'dat.gui';
 import * as THREE from 'three';
 import TrackballControls from 'three-trackballcontrols';
-import { defineComponent, ref } from 'vue';
+import {defineComponent, ref} from 'vue';
 
 export default defineComponent({
-    setup () {
+    setup() {
         const containerRef = ref();
         const scene = new THREE.Scene();
         const WebGLRenderer = new THREE.WebGLRenderer();
@@ -21,14 +21,14 @@ export default defineComponent({
             gui
         };
     },
-    mounted () {
+    mounted() {
         this.init();
     },
-    beforeUnmount () {
+    beforeUnmount() {
         this.depose();
     },
     methods: {
-        init () {
+        init() {
             const stats = initStats();
 
             const innerWidth = window.innerWidth - 300;
@@ -73,7 +73,7 @@ export default defineComponent({
                 rotationSpeed: 0.02,
                 numberOfObjects: _this.scene.children.length,
 
-                removeCube: function () {
+                removeCube: function() {
                     const allChildren = _this.scene.children;
                     const lastObject = allChildren[allChildren.length - 1];
                     if (lastObject instanceof THREE.Mesh) {
@@ -82,7 +82,7 @@ export default defineComponent({
                     }
                 },
 
-                addCube: function () {
+                addCube: function() {
                     const cubeSize = Math.ceil(Math.random() * 3);
                     const cubeGeometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
                     const cubeMaterial = new THREE.MeshLambertMaterial({
@@ -98,7 +98,7 @@ export default defineComponent({
                     this.numberOfObjects = _this.scene.children.length;
                 },
 
-                outputObjects: function () {
+                outputObjects: function() {
                     console.log(_this.scene.children);
                 }
             };
@@ -114,7 +114,7 @@ export default defineComponent({
             const renderScene = () => {
                 trackballControls.update(clock.getDelta());
                 stats.update();
-                this.scene.traverse(function (e) {
+                this.scene.traverse(function(e) {
                     if (e instanceof THREE.Mesh && e != plane) {
                         e.rotation.x += controls.rotationSpeed;
                         e.rotation.y += controls.rotationSpeed;
@@ -127,7 +127,7 @@ export default defineComponent({
 
             renderScene();
         },
-        depose () {
+        depose() {
             this.WebGLRenderer.dispose();
             this.gui.destroy();
             const panelGroup = document.querySelector('#panelGroup');

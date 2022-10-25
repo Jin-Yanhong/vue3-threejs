@@ -3,9 +3,9 @@
 </template>
 <script lang="ts">
 import * as THREE from 'three';
-import { defineComponent, ref } from 'vue';
+import {defineComponent, ref} from 'vue';
 export default defineComponent({
-    setup () {
+    setup() {
         const containerRef = ref<HTMLDivElement>();
         const scene = new THREE.Scene();
         const WebGLRenderer = new THREE.WebGLRenderer();
@@ -15,14 +15,14 @@ export default defineComponent({
             WebGLRenderer
         };
     },
-    mounted () {
+    mounted() {
         this.init();
     },
-    beforeUnmount () {
+    beforeUnmount() {
         this.depose();
     },
     methods: {
-        init () {
+        init() {
             const innerWidth = window.innerWidth - 300;
             const innerHeight = window.innerHeight;
 
@@ -35,7 +35,7 @@ export default defineComponent({
             this.scene.add(axes);
 
             const planeGeometry = new THREE.PlaneGeometry(60, 20);
-            const planeMaterial = new THREE.MeshBasicMaterial({ color: 0xcccccc });
+            const planeMaterial = new THREE.MeshBasicMaterial({color: 0xcccccc});
             const plane = new THREE.Mesh(planeGeometry, planeMaterial);
 
             // rotate and position the plane
@@ -51,7 +51,7 @@ export default defineComponent({
             this.scene.add(plane);
 
             const cubeGeometry = new THREE.BoxGeometry(4, 4, 4);
-            const cubeMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
+            const cubeMaterial = new THREE.MeshBasicMaterial({color: 0xff0000, wireframe: true});
             const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
 
             cube.position.x = -4;
@@ -61,7 +61,7 @@ export default defineComponent({
             this.scene.add(cube);
 
             const sphereGeometry = new THREE.SphereGeometry(4, 20, 20);
-            const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x7777ff, wireframe: true });
+            const sphereMaterial = new THREE.MeshBasicMaterial({color: 0x7777ff, wireframe: true});
             const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 
             sphere.position.x = 20;
@@ -77,7 +77,7 @@ export default defineComponent({
 
             this.WebGLRenderer.render(this.scene, camera);
         },
-        depose () {
+        depose() {
             this.WebGLRenderer.dispose();
         }
     }

@@ -2,14 +2,14 @@
     <div class="view" ref="containerRef"></div>
 </template>
 <script>
-import { initStats } from '@/util';
+import {initStats} from '@/util';
 import * as dat from 'dat.gui';
 import * as THREE from 'three';
 import TrackballControls from 'three-trackballcontrols';
-import { defineComponent, ref } from 'vue';
+import {defineComponent, ref} from 'vue';
 
 export default defineComponent({
-    setup () {
+    setup() {
         const containerRef = ref();
         const scene = new THREE.Scene();
         const WebGLRenderer = new THREE.WebGLRenderer();
@@ -22,14 +22,14 @@ export default defineComponent({
             gui
         };
     },
-    mounted () {
+    mounted() {
         this.init();
     },
-    beforeUnmount () {
+    beforeUnmount() {
         this.depose();
     },
     methods: {
-        init () {
+        init() {
             const stats = initStats();
 
             const innerWidth = window.innerWidth - 300;
@@ -133,7 +133,7 @@ export default defineComponent({
             renderScene();
         },
 
-        depose () {
+        depose() {
             this.WebGLRenderer.dispose();
             this.gui.destroy();
             const panelGroup = document.querySelector('#panelGroup');

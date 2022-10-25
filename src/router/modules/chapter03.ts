@@ -1,5 +1,5 @@
 import Layout from '@/layout/index.vue';
-import { RouteRecordRaw } from 'vue-router';
+import {RouteRecordRaw} from 'vue-router';
 
 const chapter03: RouteRecordRaw = {
     path: '/chapter-03',
@@ -33,6 +33,39 @@ const chapter03: RouteRecordRaw = {
                 show: true
             },
             component: () => import('@/views/chapter-03/02-spot-light.vue')
+        },
+        {
+            path: '3',
+            name: '03-point-light',
+            meta: {
+                title: '03-point-light',
+                icon: 'Document',
+                cache: true,
+                show: true
+            },
+            component: () => import('@/views/chapter-03/03-point-light.vue')
+        },
+        {
+            path: '4',
+            name: '04-directional-light',
+            meta: {
+                title: '04-directional-light',
+                icon: 'Document',
+                cache: true,
+                show: true
+            },
+            component: () => import('@/views/chapter-03/04-directional-light.vue')
+        },
+        {
+            path: '5',
+            name: '05-hemisphere-light',
+            meta: {
+                title: '05-hemisphere-light',
+                icon: 'Document',
+                cache: true,
+                show: true
+            },
+            component: () => import('@/views/chapter-03/05-hemisphere-light.vue')
         }
     ]
 };

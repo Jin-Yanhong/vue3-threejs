@@ -20,10 +20,10 @@
 
 <script lang="ts">
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
-import { ElMenuItem, ElSubMenu } from 'element-plus';
-import { defineComponent, PropType, ref } from 'vue';
-import { RouteRecordRaw } from 'vue-router';
-function registerIcon () {
+import {ElMenuItem, ElSubMenu} from 'element-plus';
+import {defineComponent, PropType, ref} from 'vue';
+import {RouteRecordRaw} from 'vue-router';
+function registerIcon() {
     const icon: any = {};
     for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
         icon[key] = component;
@@ -32,15 +32,15 @@ function registerIcon () {
 }
 
 export default defineComponent({
-    setup (props: any) {
+    setup(props: any) {
         const fatherPath = ref(props.basePath);
         return {
             fatherPath
         };
     },
     props: {
-        item: { type: Object as PropType<RouteRecordRaw>, required: true },
-        basePath: { type: String, required: true }
+        item: {type: Object as PropType<RouteRecordRaw>, required: true},
+        basePath: {type: String, required: true}
     },
     name: 'SidebarItem',
     components: {
@@ -50,11 +50,11 @@ export default defineComponent({
     },
 
     methods: {
-        routerPath (item: RouteRecordRaw): string {
+        routerPath(item: RouteRecordRaw): string {
             const path = this.fatherPath === '/' ? '/' + item.path : this.fatherPath + '/' + item.path;
             return path;
         },
-        menuClick (item: RouteRecordRaw) {
+        menuClick(item: RouteRecordRaw) {
             this.$router.push(this.routerPath(item));
         }
     }

@@ -4,14 +4,14 @@ export class Stats {
     fpsPanel;
     msPanel;
     memPanel;
-    constructor () {
+    constructor() {
         this.mode = 0;
         this.container = document.createElement('div');
         this.container.setAttribute('id', 'panelGroup');
         this.container.style.cssText = 'position:fixed;top:0;left:300px;cursor:pointer;opacity:0.9;z-index:10000';
         this.container.addEventListener(
             'click',
-            (event) => {
+            event => {
                 event.preventDefault();
                 this.showPanel(++this.mode % this.container.children.length);
             },
@@ -36,10 +36,10 @@ export class Stats {
             dom: _this.container,
             addPanel: _this.addPanel,
             showPanel: _this.showPanel,
-            begin: function () {
+            begin: function() {
                 beginTime = (performance || Date).now();
             },
-            end: function () {
+            end: function() {
                 frames++;
                 const time = (performance || Date).now();
                 _this.msPanel.update(time - beginTime, 200);
@@ -54,7 +54,7 @@ export class Stats {
                 }
                 return time;
             },
-            update: function () {
+            update: function() {
                 beginTime = this.end();
             },
             // Backwards Compatibility
@@ -63,12 +63,12 @@ export class Stats {
         };
     }
 
-    addPanel (panel) {
+    addPanel(panel) {
         this.container.appendChild(panel.dom);
         return panel;
     }
 
-    showPanel (id) {
+    showPanel(id) {
         if (this.container) {
             for (let i = 0; i < this.container.children.length; i++) {
                 this.container.children[i].style.display = i === id ? 'block' : 'none';
@@ -77,7 +77,7 @@ export class Stats {
         }
     }
 
-    initPanel = function (name, fg, bg) {
+    initPanel = function(name, fg, bg) {
         let min = Infinity;
         let max = 0;
         const round = Math.round;
@@ -109,7 +109,7 @@ export class Stats {
 
         return {
             dom: canvas,
-            update: function (value, maxValue) {
+            update: function(value, maxValue) {
                 min = Math.min(min, value);
                 max = Math.max(max, value);
                 context.fillStyle = bg;

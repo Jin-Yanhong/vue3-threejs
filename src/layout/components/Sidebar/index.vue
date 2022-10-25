@@ -7,12 +7,12 @@
 </template>
 
 <script lang="ts">
-import { routes } from '@/router';
-import { memuBgColor } from '@/setting';
-import { defineComponent } from 'vue';
+import {routes} from '@/router';
+import {memuBgColor} from '@/setting';
+import {defineComponent} from 'vue';
 import SidebarItem from './SidebarItem.vue';
 export default defineComponent({
-    setup () {
+    setup() {
         const routerList = routes;
         const bgColor = memuBgColor;
         return {
@@ -25,7 +25,7 @@ export default defineComponent({
         SidebarItem
     },
     computed: {
-        activeMenu (): string {
+        activeMenu(): string {
             const route = this.$route;
             const path = route.path;
             return path;

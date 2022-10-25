@@ -57,32 +57,86 @@ export default defineComponent({
 
             const ambientLight = new THREE.AmbientLight(0x353535);
             this.scene.add(ambientLight);
+
+            // the point light where working with
+            const pointColor = '#ccffcc';
+            const pointLight = new THREE.PointLight(pointColor);
+            pointLight.decay = 0.1;
+            pointLight.castShadow = true;
+            this.scene.add(pointLight);
+
+            // const helper = new THREE.PointLightHelper(pointLight);
+            // this.scene.add(helper);
+
+            const shadowHelper = new THREE.CameraHelper(pointLight.shadow.camera);
+            // this.scene.add(shadowHelper);
+
+            // add a small sphere simulating the pointlight
+            const sphereLight = new THREE.SphereGeometry(0.2);
+            const sphereLightMaterial = new THREE.MeshBasicMaterial({
+                color: 0xac6c25
+            });
+            const sphereLightMesh = new THREE.Mesh(sphereLight, sphereLightMaterial);
+            // sphereLightMesh.position = new THREE.Vector3(3, 0, 5);
+            this.scene.add(sphereLightMesh);
+
             this.WebGLRenderer.render(this.scene, camera);
             this.containerRef.appendChild(this.WebGLRenderer.domElement);
 
+            // used to determine the switch point for the light animation
+            let invert = 1;
+            let phase = 0;
+
             const controls = {
-                intensity: ambientLight.intensity,
+                rotationSpeed: 0.01,
+                bouncingSpeed: 0.03,
                 ambientColor: ambientLight.color.getStyle(),
-                disableSpotlight: false
+                pointColor: pointLight.color.getStyle(),
+                intensity: 1,
+                distance: pointLight.distance
             };
-            this.gui.add(controls, 'intensity', 0, 3, 0.1).onChange(function(e) {
-                ambientLight.color = new THREE.Color(controls.ambientColor);
-                ambientLight.intensity = controls.intensity;
-            });
+
             this.gui.addColor(controls, 'ambientColor').onChange(function(e) {
-                ambientLight.color = new THREE.Color(controls.ambientColor);
-                ambientLight.intensity = controls.intensity;
+                ambientLight.color = new THREE.Color(e);
             });
-            this.gui.add(controls, 'disableSpotlight').onChange(function(e) {
-                spotLight.visible = !e;
+
+            this.gui.addColor(controls, 'pointColor').onChange(function(e) {
+                pointLight.color = new THREE.Color(e);
+            });
+
+            this.gui.add(controls, 'distance', 0, 100).onChange(function(e) {
+                pointLight.distance = e;
+            });
+
+            this.gui.add(controls, 'intensity', 0, 3).onChange(function(e) {
+                pointLight.intensity = e;
             });
 
             const trackballControls = new TrackballControls(camera, this.WebGLRenderer.domElement);
             const clock = new THREE.Clock();
 
             const renderScene = () => {
-                trackballControls.update(clock.getDelta());
+                shadowHelper.update();
                 stats.update();
+                pointLight.position.copy(sphereLightMesh.position);
+                trackballControls.update(clock.getDelta());
+
+                // move the light simulation
+                if (phase > 2 * Math.PI) {
+                    invert = invert * -1;
+                    phase -= 2 * Math.PI;
+                } else {
+                    phase += controls.rotationSpeed;
+                }
+                sphereLightMesh.position.z = +(25 * Math.sin(phase));
+                sphereLightMesh.position.x = +(14 * Math.cos(phase));
+                sphereLightMesh.position.y = 5;
+
+                if (invert < 0) {
+                    const pivot = 14;
+                    sphereLightMesh.position.x = invert * (sphereLightMesh.position.x - pivot) + pivot;
+                }
+
                 requestAnimationFrame(renderScene);
                 this.WebGLRenderer.render(this.scene, camera);
             };

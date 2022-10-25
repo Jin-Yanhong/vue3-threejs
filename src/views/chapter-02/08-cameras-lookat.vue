@@ -2,14 +2,14 @@
     <div class="view" ref="containerRef"></div>
 </template>
 <script>
-import { initStats } from '@/util';
+import {initStats} from '@/util';
 import * as dat from 'dat.gui';
 import * as THREE from 'three';
 import TrackballControls from 'three-trackballcontrols';
-import { defineComponent, ref } from 'vue';
+import {defineComponent, ref} from 'vue';
 
 export default defineComponent({
-    setup () {
+    setup() {
         const containerRef = ref();
         const scene = new THREE.Scene();
         const WebGLRenderer = new THREE.WebGLRenderer();
@@ -31,14 +31,14 @@ export default defineComponent({
             step
         };
     },
-    mounted () {
+    mounted() {
         this.init();
     },
-    beforeUnmount () {
+    beforeUnmount() {
         this.depose();
     },
     methods: {
-        init () {
+        init() {
             const innerWidth = window.innerWidth - 300;
             const innerHeight = window.innerHeight;
 
@@ -52,7 +52,7 @@ export default defineComponent({
             this.WebGLRenderer.shadowMap.enabled = true;
 
             const planeGeometry = new THREE.PlaneGeometry(180, 180);
-            const planeMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
+            const planeMaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
             const plane = new THREE.Mesh(planeGeometry, planeMaterial);
             plane.rotation.x = -0.5 * Math.PI;
             plane.position.x = 0;
@@ -75,7 +75,7 @@ export default defineComponent({
             }
 
             const lookAtGeom = new THREE.SphereGeometry(2);
-            const lookAtMesh = new THREE.Mesh(lookAtGeom, new THREE.MeshLambertMaterial({ color: 0x00ff00 }));
+            const lookAtMesh = new THREE.Mesh(lookAtGeom, new THREE.MeshLambertMaterial({color: 0x00ff00}));
             this.scene.add(lookAtMesh);
 
             const directionalLight = new THREE.DirectionalLight(0xffffff, 0.7);
@@ -100,7 +100,7 @@ export default defineComponent({
             const controls = {
                 perspective: 'Perspective',
 
-                switchCamera: function () {
+                switchCamera: function() {
                     if (_this.camera instanceof THREE.PerspectiveCamera) {
                         _this.camera = new THREE.OrthographicCamera(window.innerWidth / -16, window.innerWidth / 16, window.innerHeight / 16, window.innerHeight / -16, -200, 500);
                         _this.camera.position.x = 120;
@@ -140,14 +140,14 @@ export default defineComponent({
             };
             renderScene();
         },
-        depose () {
+        depose() {
             this.WebGLRenderer.dispose();
             this.gui.destroy();
             const panelGroup = document.querySelector('#panelGroup');
             document.body.removeChild(panelGroup);
             this.trackballControls.dispose();
         },
-        initTrackballControls (camera, renderer) {
+        initTrackballControls(camera, renderer) {
             const trackballControls = new TrackballControls(camera, renderer.domElement);
             trackballControls.rotateSpeed = 1.0;
             trackballControls.zoomSpeed = 1.2;
