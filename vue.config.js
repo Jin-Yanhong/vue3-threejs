@@ -15,14 +15,14 @@ module.exports = defineConfig({
                 changeOrigin: true, // needed for virtual hosted sites
                 ws: true, // proxy websockets
                 pathRewrite: {
-                    ['^' + process.env.VUE_APP_BASE_API]: '',
-                },
-            },
-        },
+                    ['^' + process.env.VUE_APP_BASE_API]: ''
+                }
+            }
+        }
     },
     configureWebpack: {
         experiments: {
-            topLevelAwait: true,
-        },
-    },
+            topLevelAwait: true
+        }
+    }
 });

@@ -18,7 +18,7 @@ export default defineComponent({
             containerRef,
             scene,
             WebGLRenderer,
-            gui,
+            gui
         };
     },
     mounted () {
@@ -63,7 +63,7 @@ export default defineComponent({
             const controls = {
                 intensity: ambientLight.intensity,
                 ambientColor: ambientLight.color.getStyle(),
-                disableSpotlight: false,
+                disableSpotlight: false
             };
             this.gui.add(controls, 'intensity', 0, 3, 0.1).onChange(function (e) {
                 ambientLight.color = new THREE.Color(controls.ambientColor);
@@ -102,14 +102,14 @@ export default defineComponent({
             const trunkMesh = new THREE.Mesh(
                 trunk,
                 new THREE.MeshPhongMaterial({
-                    color: 0x8b4513,
-                }),
+                    color: 0x8b4513
+                })
             );
             const leavesMesh = new THREE.Mesh(
                 leaves,
                 new THREE.MeshPhongMaterial({
-                    color: 0x00ff00,
-                }),
+                    color: 0x00ff00
+                })
             );
 
             // position the trunk. Set y to half of height of trunk
@@ -131,7 +131,7 @@ export default defineComponent({
             const wallBottom = new THREE.BoxGeometry(2, 2, 50);
 
             const wallMaterial = new THREE.MeshPhongMaterial({
-                color: 0xa0522d,
+                color: 0xa0522d
             });
 
             const wallLeftMesh = new THREE.Mesh(wallLeft, wallMaterial);
@@ -154,7 +154,7 @@ export default defineComponent({
             // create the ground plane
             const planeGeometry = new THREE.PlaneGeometry(70, 50);
             const planeMaterial = new THREE.MeshPhongMaterial({
-                color: 0x9acd32,
+                color: 0x9acd32
             });
             const plane = new THREE.Mesh(planeGeometry, planeMaterial);
             plane.receiveShadow = true;
@@ -175,14 +175,14 @@ export default defineComponent({
             const roofMesh = new THREE.Mesh(
                 roof,
                 new THREE.MeshPhongMaterial({
-                    color: 0x8b7213,
-                }),
+                    color: 0x8b7213
+                })
             );
             const baseMesh = new THREE.Mesh(
                 base,
                 new THREE.MeshPhongMaterial({
-                    color: 0xffe4c4,
-                }),
+                    color: 0xffe4c4
+                })
             );
 
             roofMesh.position.set(25, 8, 0);
@@ -195,7 +195,7 @@ export default defineComponent({
 
             scene.add(roofMesh);
             scene.add(baseMesh);
-        },
-    },
+        }
+    }
 });
 </script>

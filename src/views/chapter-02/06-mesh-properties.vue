@@ -18,7 +18,7 @@ export default defineComponent({
             containerRef,
             scene,
             WebGLRenderer,
-            gui,
+            gui
         };
     },
     mounted () {
@@ -46,7 +46,7 @@ export default defineComponent({
 
             const planeGeometry = new THREE.PlaneGeometry(60, 20);
             const planeMaterial = new THREE.MeshLambertMaterial({
-                color: 0xaaaaaa,
+                color: 0xaaaaaa
             });
             const plane = new THREE.Mesh(planeGeometry, planeMaterial);
             plane.rotation.x = -0.5 * Math.PI;
@@ -90,7 +90,7 @@ export default defineComponent({
                     this.positionX = cube.position.x;
                     this.positionY = cube.position.y;
                     this.positionZ = cube.position.z;
-                },
+                }
             };
 
             // const materials = [
@@ -165,8 +165,8 @@ export default defineComponent({
             this.gui.destroy();
             const panelGroup = document.querySelector('#panelGroup');
             document.body.removeChild(panelGroup);
-        },
-    },
+        }
+    }
 });
 </script>
 <style lang="scss" scoped></style>

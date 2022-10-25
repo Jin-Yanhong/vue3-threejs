@@ -17,20 +17,20 @@ export default defineComponent({
         const bgColor = memuBgColor;
         return {
             bgColor,
-            routerList,
+            routerList
         };
     },
     name: 'Side_bar',
     components: {
-        SidebarItem,
+        SidebarItem
     },
     computed: {
         activeMenu (): string {
             const route = this.$route;
             const path = route.path;
             return path;
-        },
-    },
+        }
+    }
 });
 </script>
 <style lang="scss" scoped>

@@ -9,7 +9,7 @@ const chapter03: RouteRecordRaw = {
         title: 'Chapter - 03',
         icon: 'Folder',
         cache: true,
-        show: true,
+        show: true
     },
     children: [
         {
@@ -19,11 +19,22 @@ const chapter03: RouteRecordRaw = {
                 title: '01-ambient-light',
                 icon: 'Document',
                 cache: true,
-                show: true,
+                show: true
             },
-            component: () => import('@/views/chapter-03/01-ambient-light.vue'),
+            component: () => import('@/views/chapter-03/01-ambient-light.vue')
         },
-    ],
+        {
+            path: '2',
+            name: '02-spot-light',
+            meta: {
+                title: '02-spot-light',
+                icon: 'Document',
+                cache: true,
+                show: true
+            },
+            component: () => import('@/views/chapter-03/02-spot-light.vue')
+        }
+    ]
 };
 
 export default chapter03;

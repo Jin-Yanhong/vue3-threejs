@@ -18,7 +18,7 @@ export default defineComponent({
         return {
             containerRef,
             scene,
-            WebGLRenderer,
+            WebGLRenderer
         };
     },
     mounted () {
@@ -45,7 +45,7 @@ export default defineComponent({
 
             const planeGeometry = new THREE.PlaneGeometry(60, 40, 1, 1);
             const planeMaterial = new THREE.MeshLambertMaterial({
-                color: 0xffffff,
+                color: 0xffffff
             });
             const plane = new THREE.Mesh(planeGeometry, planeMaterial);
             plane.receiveShadow = true;
@@ -122,18 +122,18 @@ export default defineComponent({
             for (let i = 0; i < geoms.length; i++) {
                 const cubeMaterial = new THREE.MeshLambertMaterial({
                     wireframe: true,
-                    color: Math.random() * 0xffffff,
+                    color: Math.random() * 0xffffff
                 });
 
                 const materials = [
                     new THREE.MeshLambertMaterial({
-                        color: Math.random() * 0xffffff,
+                        color: Math.random() * 0xffffff
                     }),
                     new THREE.MeshBasicMaterial({
                         color: 0x000000,
-                        wireframe: true,
+                        wireframe: true
                     }),
-                    cubeMaterial,
+                    cubeMaterial
                 ];
 
                 const mesh = createMultiMaterialObject(geoms[i], materials);
@@ -150,8 +150,8 @@ export default defineComponent({
                 if ((i + 1) % 4 == 0) j++;
                 this.scene.add(mesh);
             }
-        },
-    },
+        }
+    }
 });
 </script>
 <style lang="scss" scoped></style>

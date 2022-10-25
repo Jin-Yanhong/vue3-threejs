@@ -17,14 +17,14 @@ export const routes: Array<RouteRecordRaw> = [
         name: 'redirect',
         redirect: '/chapter-01/2',
         meta: {
-            show: false,
-        },
-    },
+            show: false
+        }
+    }
 ];
 
 const router = createRouter({
     history: createWebHashHistory(process.env.BASE_URL),
-    routes,
+    routes
 });
 
 router.beforeEach(async (to: RouteLocationNormalized, from: RouteLocationNormalized, next) => {

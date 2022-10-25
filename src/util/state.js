@@ -15,7 +15,7 @@ export class Stats {
                 event.preventDefault();
                 this.showPanel(++this.mode % this.container.children.length);
             },
-            false,
+            false
         );
 
         let beginTime = (performance || Date).now();
@@ -59,7 +59,7 @@ export class Stats {
             },
             // Backwards Compatibility
             domElement: this.container,
-            setMode: this.showPanel,
+            setMode: this.showPanel
         };
     }
 
@@ -122,7 +122,7 @@ export class Stats {
                 context.fillStyle = bg;
                 context.globalAlpha = 0.9;
                 context.fillRect(GRAPH_X + GRAPH_WIDTH - PR, GRAPH_Y, PR, round((1 - value / maxValue) * GRAPH_HEIGHT));
-            },
+            }
         };
     };
 }

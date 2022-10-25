@@ -12,7 +12,7 @@ export default defineComponent({
         return {
             containerRef,
             scene,
-            WebGLRenderer,
+            WebGLRenderer
         };
     },
     mounted () {
@@ -79,8 +79,8 @@ export default defineComponent({
         },
         depose () {
             this.WebGLRenderer.dispose();
-        },
-    },
+        }
+    }
 });
 </script>
 <style lang="scss" scoped></style>

@@ -7,6 +7,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 export default defineComponent({
-    name: 'App_Main',
+    name: 'App_Main'
 });
 </script>

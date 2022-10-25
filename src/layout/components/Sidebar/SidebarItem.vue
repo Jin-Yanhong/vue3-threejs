@@ -35,18 +35,18 @@ export default defineComponent({
     setup (props: any) {
         const fatherPath = ref(props.basePath);
         return {
-            fatherPath,
+            fatherPath
         };
     },
     props: {
         item: { type: Object as PropType<RouteRecordRaw>, required: true },
-        basePath: { type: String, required: true },
+        basePath: { type: String, required: true }
     },
     name: 'SidebarItem',
     components: {
         ElSubMenu,
         ElMenuItem,
-        ...registerIcon(),
+        ...registerIcon()
     },
 
     methods: {
@@ -56,8 +56,8 @@ export default defineComponent({
         },
         menuClick (item: RouteRecordRaw) {
             this.$router.push(this.routerPath(item));
-        },
-    },
+        }
+    }
 });
 </script>
 

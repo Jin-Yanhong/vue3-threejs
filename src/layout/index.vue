@@ -16,8 +16,8 @@ export default defineComponent({
     name: 'ViewLayout',
     components: {
         Sidebar,
-        AppMain,
-    },
+        AppMain
+    }
 });
 </script>
 <style lang="scss" scoped>

@@ -13,7 +13,7 @@ export default defineComponent({
         return {
             containerRef,
             scene,
-            WebGLRenderer,
+            WebGLRenderer
         };
     },
     mounted () {
@@ -41,7 +41,7 @@ export default defineComponent({
 
             const cubeGeometry = new THREE.BoxGeometry(4, 4, 4);
             const cubeMaterial = new THREE.MeshLambertMaterial({
-                color: 0xff0000,
+                color: 0xff0000
             });
             const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
             cube.castShadow = true;
@@ -52,7 +52,7 @@ export default defineComponent({
 
             const sphereGeometry = new THREE.SphereGeometry(4, 20, 20);
             const sphereMaterial = new THREE.MeshLambertMaterial({
-                color: 0x7777ff,
+                color: 0x7777ff
             });
             const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 
@@ -63,7 +63,7 @@ export default defineComponent({
 
             const planeGeometry = new THREE.PlaneGeometry(60, 20);
             const planeMaterial = new THREE.MeshLambertMaterial({
-                color: 0xaaaaaa,
+                color: 0xaaaaaa
             });
             const plane = new THREE.Mesh(planeGeometry, planeMaterial);
 
@@ -101,8 +101,8 @@ export default defineComponent({
         },
         depose () {
             this.WebGLRenderer.dispose();
-        },
-    },
+        }
+    }
 });
 </script>
 <style lang="scss" scoped></style>

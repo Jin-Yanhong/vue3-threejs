@@ -18,7 +18,7 @@ export default defineComponent({
             containerRef,
             scene,
             WebGLRenderer,
-            gui,
+            gui
         };
     },
     mounted () {
@@ -44,7 +44,7 @@ export default defineComponent({
 
             const planeGeometry = new THREE.PlaneGeometry(60, 40, 1, 1);
             const planeMaterial = new THREE.MeshLambertMaterial({
-                color: 0xffffff,
+                color: 0xffffff
             });
             const plane = new THREE.Mesh(planeGeometry, planeMaterial);
             plane.receiveShadow = true;
@@ -105,7 +105,7 @@ export default defineComponent({
                     mesh2.name = 'clone';
                     this.scene.remove(scene.getChildByName('clone'));
                     this.scene.add(mesh2);
-                },
+                }
             };
             this.gui.add(controls, 'clone');
 
@@ -135,11 +135,11 @@ export default defineComponent({
             const controls = {
                 x: x,
                 y: y,
-                z: z,
+                z: z
             };
             return controls;
-        },
-    },
+        }
+    }
 });
 </script>
 <style lang="scss" scoped></style>

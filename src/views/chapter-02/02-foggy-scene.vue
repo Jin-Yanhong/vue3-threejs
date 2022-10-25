@@ -19,7 +19,7 @@ export default defineComponent({
             containerRef,
             scene,
             WebGLRenderer,
-            gui,
+            gui
         };
     },
     mounted () {
@@ -47,7 +47,7 @@ export default defineComponent({
 
             const planeGeometry = new THREE.PlaneGeometry(60, 20);
             const planeMaterial = new THREE.MeshLambertMaterial({
-                color: 0xaaaaaa,
+                color: 0xaaaaaa
             });
             const plane = new THREE.Mesh(planeGeometry, planeMaterial);
             plane.rotation.x = -0.5 * Math.PI;
@@ -86,7 +86,7 @@ export default defineComponent({
                     const cubeSize = Math.ceil(Math.random() * 3);
                     const cubeGeometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
                     const cubeMaterial = new THREE.MeshLambertMaterial({
-                        color: Math.random() * 0xffffff,
+                        color: Math.random() * 0xffffff
                     });
                     const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
                     cube.castShadow = true;
@@ -105,7 +105,7 @@ export default defineComponent({
 
                 outputObjects: function () {
                     console.log(_this.scene.children);
-                },
+                }
             };
 
             this.gui.add(controls, 'rotationSpeed', 0, 0.5);
@@ -139,8 +139,8 @@ export default defineComponent({
             this.gui.destroy();
             const panelGroup = document.querySelector('#panelGroup');
             document.body.removeChild(panelGroup);
-        },
-    },
+        }
+    }
 });
 </script>
 <style lang="scss" scoped></style>

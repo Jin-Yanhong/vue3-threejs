@@ -26,7 +26,7 @@ export default defineComponent({
             trackballControls,
             camera,
             stats,
-            clock,
+            clock
         };
     },
     mounted () {
@@ -112,7 +112,7 @@ export default defineComponent({
                         _this.trackballControls = _this.initTrackballControls(_this.camera, _this.WebGLRenderer);
                         this.perspective = 'Perspective';
                     }
-                },
+                }
             };
 
             this.gui.add(controls, 'switchCamera');
@@ -144,8 +144,8 @@ export default defineComponent({
             this.stats.update();
             requestAnimationFrame(this.renderScene);
             this.WebGLRenderer.render(this.scene, this.camera);
-        },
-    },
+        }
+    }
 });
 </script>
 <style lang="scss" scoped></style>
