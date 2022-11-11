@@ -7,9 +7,9 @@
 </template>
 
 <script lang="ts">
-import {routes} from '@/router';
-import {memuBgColor} from '@/setting';
-import {defineComponent} from 'vue';
+import { routes } from '@/router';
+import { memuBgColor } from '@/setting';
+import { defineComponent } from 'vue';
 import SidebarItem from './SidebarItem.vue';
 export default defineComponent({
     setup() {

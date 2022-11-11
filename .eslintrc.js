@@ -12,16 +12,16 @@ module.exports = {
     plugins: ['vue', '@typescript-eslint'],
     ignorePatterns: ['**/assets/*'],
     rules: {
-        'indent': ['warn', 4],
-        'quotes': ['warn', 'single'],
         'semi': ['warn', 'always'],
-        'max-len': ['warn', {code: 360}],
-        'linebreak-style': ['warn', 'windows'],
-        'object-curly-spacing': ['warn', 'never'],
-        'space-before-function-paren': ['warn', 'never'],
+        'quotes': ['warn', 'single'],
         'comma-dangle': ['warn', 'never'],
+        'max-len': ['warn', { code: 360 }],
+        'linebreak-style': ['warn', 'windows'],
+        'object-curly-spacing': ['warn', 'always'],
         'arrow-parens': ['warn', 'as-needed'],
+        'space-before-function-paren': 0,
         'require-jsdoc': 0,
-        'valid-jsdoc': 0
+        'valid-jsdoc': 0,
+        'indent': 0
     }
 };

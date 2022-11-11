@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+import { defineComponent } from 'vue';
 import AppMain from './components/AppMain.vue';
 import Sidebar from './components/Sidebar/index.vue';
 export default defineComponent({

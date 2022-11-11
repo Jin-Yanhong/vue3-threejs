@@ -1,4 +1,4 @@
-import {Stats} from './state';
+import { Stats } from './state';
 
 export function initStats(type) {
     const panelType = typeof type !== 'undefined' && type && !isNaN(type) ? parseInt(type) : 0;

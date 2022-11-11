@@ -2,11 +2,11 @@
     <div class="view" ref="containerRef"></div>
 </template>
 <script>
-import {initStats} from '@/util';
+import { initStats } from '@/util';
 import * as dat from 'dat.gui';
 import * as THREE from 'three';
 import TrackballControls from 'three-trackballcontrols';
-import {defineComponent, ref} from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
     setup() {
@@ -83,7 +83,7 @@ export default defineComponent({
                 translateZ: 0,
                 visible: true,
 
-                translate: function() {
+                translate: function () {
                     cube.translateX(this.translateX);
                     cube.translateY(this.translateY);
                     cube.translateZ(this.translateZ);
@@ -98,7 +98,7 @@ export default defineComponent({
             //   new THREE.MeshBasicMaterial({color: 0x000000, wireframe: true})
             // ];
             // const cube = THREE.SceneUtils.createMultiMaterialObject(geom, materials);
-            const material = new THREE.MeshLambertMaterial({color: 0x44ff44});
+            const material = new THREE.MeshLambertMaterial({ color: 0x44ff44 });
             const geom = new THREE.BoxGeometry(5, 8, 3);
             const cube = new THREE.Mesh(geom, material);
             cube.position.y = 4;
@@ -117,19 +117,19 @@ export default defineComponent({
 
             contX.listen();
 
-            contX.onChange(function(value) {
+            contX.onChange(function (value) {
                 cube.position.x = controls.positionX;
                 // cube.children[1].position.x = controls.positionX;
             });
             contY.listen();
 
-            contY.onChange(function(value) {
+            contY.onChange(function (value) {
                 cube.position.y = controls.positionY;
             });
 
             contZ.listen();
 
-            contZ.onChange(function(value) {
+            contZ.onChange(function (value) {
                 cube.position.z = controls.positionZ;
             });
 

@@ -4,11 +4,11 @@
 <script>
 import * as THREE from 'three';
 import TrackballControls from 'three-trackballcontrols';
-import {ConvexGeometry} from 'three/examples/jsm/geometries/ConvexGeometry';
-import {ParametricGeometries} from 'three/examples/jsm/geometries/ParametricGeometries';
-import {ParametricGeometry} from 'three/examples/jsm/geometries/ParametricGeometry';
-import {createMultiMaterialObject} from 'three/examples/jsm/utils/SceneUtils';
-import {defineComponent, ref} from 'vue';
+import { ConvexGeometry } from 'three/examples/jsm/geometries/ConvexGeometry';
+import { ParametricGeometries } from 'three/examples/jsm/geometries/ParametricGeometries';
+import { ParametricGeometry } from 'three/examples/jsm/geometries/ParametricGeometry';
+import { createMultiMaterialObject } from 'three/examples/jsm/utils/SceneUtils';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
     setup() {
@@ -137,7 +137,7 @@ export default defineComponent({
                 ];
 
                 const mesh = createMultiMaterialObject(geoms[i], materials);
-                mesh.traverse(function(e) {
+                mesh.traverse(function (e) {
                     e.castShadow = true;
                 });
 

@@ -1,5 +1,5 @@
 import Layout from '@/layout/index.vue';
-import {RouteRecordRaw} from 'vue-router';
+import { RouteRecordRaw } from 'vue-router';
 
 const chapter02: RouteRecordRaw = {
     path: '/chapter-02',

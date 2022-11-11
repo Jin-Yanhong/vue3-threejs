@@ -2,11 +2,11 @@
     <div class="view" ref="containerRef"></div>
 </template>
 <script>
-import {initStats} from '@/util';
+import { initStats } from '@/util';
 import * as dat from 'dat.gui';
 import * as THREE from 'three';
 import TrackballControls from 'three-trackballcontrols';
-import {defineComponent, ref} from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
     setup() {
@@ -124,20 +124,20 @@ export default defineComponent({
                 intensity: 0.6
             };
 
-            this.gui.add(controls, 'hemisphere').onChange(function(e) {
+            this.gui.add(controls, 'hemisphere').onChange(function (e) {
                 if (!e) {
                     hemiLight.intensity = 0;
                 } else {
                     hemiLight.intensity = controls.intensity;
                 }
             });
-            this.gui.addColor(controls, 'groundColor').onChange(function(e) {
+            this.gui.addColor(controls, 'groundColor').onChange(function (e) {
                 hemiLight.groundColor = new THREE.Color(e);
             });
-            this.gui.addColor(controls, 'color').onChange(function(e) {
+            this.gui.addColor(controls, 'color').onChange(function (e) {
                 hemiLight.color = new THREE.Color(e);
             });
-            this.gui.add(controls, 'intensity', 0, 5).onChange(function(e) {
+            this.gui.add(controls, 'intensity', 0, 5).onChange(function (e) {
                 hemiLight.intensity = e;
             });
 

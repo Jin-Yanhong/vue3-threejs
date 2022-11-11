@@ -1,5 +1,5 @@
 import NProgress from 'nprogress';
-import {createRouter, createWebHashHistory, RouteLocationNormalized, RouteRecordRaw} from 'vue-router';
+import { createRouter, createWebHashHistory, RouteLocationNormalized, RouteRecordRaw } from 'vue-router';
 
 import 'nprogress/nprogress.css';
 
@@ -27,7 +27,7 @@ const router = createRouter({
     routes
 });
 
-router.beforeEach(async(to: RouteLocationNormalized, from: RouteLocationNormalized, next) => {
+router.beforeEach(async (to: RouteLocationNormalized, from: RouteLocationNormalized, next) => {
     NProgress.start();
     next();
     NProgress.done();

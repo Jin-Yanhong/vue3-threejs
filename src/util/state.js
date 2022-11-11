@@ -36,10 +36,10 @@ export class Stats {
             dom: _this.container,
             addPanel: _this.addPanel,
             showPanel: _this.showPanel,
-            begin: function() {
+            begin: function () {
                 beginTime = (performance || Date).now();
             },
-            end: function() {
+            end: function () {
                 frames++;
                 const time = (performance || Date).now();
                 _this.msPanel.update(time - beginTime, 200);
@@ -54,7 +54,7 @@ export class Stats {
                 }
                 return time;
             },
-            update: function() {
+            update: function () {
                 beginTime = this.end();
             },
             // Backwards Compatibility
@@ -77,7 +77,7 @@ export class Stats {
         }
     }
 
-    initPanel = function(name, fg, bg) {
+    initPanel = function (name, fg, bg) {
         let min = Infinity;
         let max = 0;
         const round = Math.round;
@@ -109,7 +109,7 @@ export class Stats {
 
         return {
             dom: canvas,
-            update: function(value, maxValue) {
+            update: function (value, maxValue) {
                 min = Math.min(min, value);
                 max = Math.max(max, value);
                 context.fillStyle = bg;

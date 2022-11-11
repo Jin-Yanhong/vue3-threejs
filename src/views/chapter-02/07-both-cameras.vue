@@ -2,11 +2,11 @@
     <div class="view" ref="containerRef"></div>
 </template>
 <script>
-import {initStats} from '@/util';
+import { initStats } from '@/util';
 import * as dat from 'dat.gui';
 import * as THREE from 'three';
 import TrackballControls from 'three-trackballcontrols';
-import {defineComponent, ref} from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
     setup() {
@@ -50,7 +50,7 @@ export default defineComponent({
             this.WebGLRenderer.shadowMap.enabled = true;
 
             const planeGeometry = new THREE.PlaneGeometry(180, 180);
-            const planeMaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
+            const planeMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
             const plane = new THREE.Mesh(planeGeometry, planeMaterial);
             plane.rotation.x = -0.5 * Math.PI;
             plane.position.x = 0;
@@ -94,7 +94,7 @@ export default defineComponent({
             const controls = {
                 perspective: 'Perspective',
 
-                switchCamera: function() {
+                switchCamera: function () {
                     if (_this.camera instanceof THREE.PerspectiveCamera) {
                         _this.camera = new THREE.OrthographicCamera(window.innerWidth / -16, window.innerWidth / 16, window.innerHeight / 16, window.innerHeight / -16, -200, 500);
                         _this.camera.position.x = 120;

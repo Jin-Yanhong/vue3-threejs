@@ -1,5 +1,5 @@
 import Layout from '@/layout/index.vue';
-import {RouteRecordRaw} from 'vue-router';
+import { RouteRecordRaw } from 'vue-router';
 
 const chapter03: RouteRecordRaw = {
     path: '/chapter-03',
@@ -66,6 +66,17 @@ const chapter03: RouteRecordRaw = {
                 show: true
             },
             component: () => import('@/views/chapter-03/05-hemisphere-light.vue')
+        },
+        {
+            path: '6',
+            name: '06-area-light',
+            meta: {
+                title: '06-area-light',
+                icon: 'Document',
+                cache: true,
+                show: true
+            },
+            component: () => import('@/views/chapter-03/06-area-light.vue')
         }
     ]
 };

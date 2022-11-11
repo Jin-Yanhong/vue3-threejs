@@ -2,11 +2,11 @@
     <div class="view" ref="containerRef"></div>
 </template>
 <script>
-import {initStats} from '@/util';
+import { initStats } from '@/util';
 import * as dat from 'dat.gui';
 import * as THREE from 'three';
 import TrackballControls from 'three-trackballcontrols';
-import {defineComponent, ref} from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
     setup() {
@@ -138,42 +138,42 @@ export default defineComponent({
                 target: 'Plane'
             };
 
-            this.gui.addColor(controls, 'ambientColor').onChange(function(e) {
+            this.gui.addColor(controls, 'ambientColor').onChange(function (e) {
                 ambientLight.color = new THREE.Color(e);
             });
 
-            this.gui.addColor(controls, 'pointColor').onChange(function(e) {
+            this.gui.addColor(controls, 'pointColor').onChange(function (e) {
                 directionalLight.color = new THREE.Color(e);
             });
 
-            this.gui.add(controls, 'intensity', 0, 5).onChange(function(e) {
+            this.gui.add(controls, 'intensity', 0, 5).onChange(function (e) {
                 directionalLight.intensity = e;
             });
 
-            this.gui.add(controls, 'debug').onChange(function(e) {
+            this.gui.add(controls, 'debug').onChange(function (e) {
                 e ? _this.scene.add(shadowCamera) : _this.scene.remove(shadowCamera);
             });
 
-            this.gui.add(controls, 'castShadow').onChange(function(e) {
+            this.gui.add(controls, 'castShadow').onChange(function (e) {
                 directionalLight.castShadow = e;
             });
 
-            this.gui.add(controls, 'onlyShadow').onChange(function(e) {
+            this.gui.add(controls, 'onlyShadow').onChange(function (e) {
                 directionalLight.onlyShadow = e;
             });
 
-            this.gui.add(controls, 'target', ['Plane', 'Sphere', 'Cube']).onChange(function(e) {
+            this.gui.add(controls, 'target', ['Plane', 'Sphere', 'Cube']).onChange(function (e) {
                 console.log(e);
                 switch (e) {
-                case 'Plane':
-                    directionalLight.target = plane;
-                    break;
-                case 'Sphere':
-                    directionalLight.target = sphere;
-                    break;
-                case 'Cube':
-                    directionalLight.target = cube;
-                    break;
+                    case 'Plane':
+                        directionalLight.target = plane;
+                        break;
+                    case 'Sphere':
+                        directionalLight.target = sphere;
+                        break;
+                    case 'Cube':
+                        directionalLight.target = cube;
+                        break;
                 }
             });
 

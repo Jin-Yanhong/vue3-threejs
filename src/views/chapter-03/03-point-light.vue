@@ -2,11 +2,11 @@
     <div class="view" ref="containerRef"></div>
 </template>
 <script>
-import {initStats} from '@/util';
+import { initStats } from '@/util';
 import * as dat from 'dat.gui';
 import * as THREE from 'three';
 import TrackballControls from 'three-trackballcontrols';
-import {defineComponent, ref} from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
     setup() {
@@ -96,19 +96,19 @@ export default defineComponent({
                 distance: pointLight.distance
             };
 
-            this.gui.addColor(controls, 'ambientColor').onChange(function(e) {
+            this.gui.addColor(controls, 'ambientColor').onChange(function (e) {
                 ambientLight.color = new THREE.Color(e);
             });
 
-            this.gui.addColor(controls, 'pointColor').onChange(function(e) {
+            this.gui.addColor(controls, 'pointColor').onChange(function (e) {
                 pointLight.color = new THREE.Color(e);
             });
 
-            this.gui.add(controls, 'distance', 0, 100).onChange(function(e) {
+            this.gui.add(controls, 'distance', 0, 100).onChange(function (e) {
                 pointLight.distance = e;
             });
 
-            this.gui.add(controls, 'intensity', 0, 3).onChange(function(e) {
+            this.gui.add(controls, 'intensity', 0, 3).onChange(function (e) {
                 pointLight.intensity = e;
             });
 

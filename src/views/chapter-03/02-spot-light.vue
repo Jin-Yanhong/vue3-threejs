@@ -2,10 +2,10 @@
     <div class="view" ref="containerRef"></div>
 </template>
 <script>
-import {initStats} from '@/util';
+import { initStats } from '@/util';
 import * as dat from 'dat.gui';
 import * as THREE from 'three';
-import {defineComponent, ref} from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
     setup() {
@@ -117,31 +117,31 @@ export default defineComponent({
                 penumbra: 0
             };
 
-            this.gui.addColor(controls, 'ambientColor').onChange(function(e) {
+            this.gui.addColor(controls, 'ambientColor').onChange(function (e) {
                 ambientLight.color = new THREE.Color(e);
             });
 
-            this.gui.addColor(controls, 'pointColor').onChange(function(e) {
+            this.gui.addColor(controls, 'pointColor').onChange(function (e) {
                 spotLight.color = new THREE.Color(e);
             });
 
-            this.gui.add(controls, 'angle', 0, Math.PI * 2).onChange(function(e) {
+            this.gui.add(controls, 'angle', 0, Math.PI * 2).onChange(function (e) {
                 spotLight.angle = e;
             });
 
-            this.gui.add(controls, 'intensity', 0, 5).onChange(function(e) {
+            this.gui.add(controls, 'intensity', 0, 5).onChange(function (e) {
                 spotLight.intensity = e;
             });
 
-            this.gui.add(controls, 'penumbra', 0, 1).onChange(function(e) {
+            this.gui.add(controls, 'penumbra', 0, 1).onChange(function (e) {
                 spotLight.penumbra = e;
             });
 
-            this.gui.add(controls, 'distance', 0, 200).onChange(function(e) {
+            this.gui.add(controls, 'distance', 0, 200).onChange(function (e) {
                 spotLight.distance = e;
             });
 
-            this.gui.add(controls, 'shadowDebug').onChange(function(e) {
+            this.gui.add(controls, 'shadowDebug').onChange(function (e) {
                 if (e) {
                     _this.scene.add(debugCamera);
                 } else {
@@ -149,25 +149,25 @@ export default defineComponent({
                 }
             });
 
-            this.gui.add(controls, 'castShadow').onChange(function(e) {
+            this.gui.add(controls, 'castShadow').onChange(function (e) {
                 spotLight.castShadow = e;
             });
 
-            this.gui.add(controls, 'target', ['Plane', 'Sphere', 'Cube']).onChange(function(e) {
+            this.gui.add(controls, 'target', ['Plane', 'Sphere', 'Cube']).onChange(function (e) {
                 switch (e) {
-                case 'Plane':
-                    spotLight.target = plane;
-                    break;
-                case 'Sphere':
-                    spotLight.target = sphere;
-                    break;
-                case 'Cube':
-                    spotLight.target = cube;
-                    break;
+                    case 'Plane':
+                        spotLight.target = plane;
+                        break;
+                    case 'Sphere':
+                        spotLight.target = sphere;
+                        break;
+                    case 'Cube':
+                        spotLight.target = cube;
+                        break;
                 }
             });
 
-            this.gui.add(controls, 'stopMovingLight').onChange(function(e) {
+            this.gui.add(controls, 'stopMovingLight').onChange(function (e) {
                 controls.stopMovingLight = e;
             });
 

@@ -20,9 +20,9 @@
 
 <script lang="ts">
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
-import {ElMenuItem, ElSubMenu} from 'element-plus';
-import {defineComponent, PropType, ref} from 'vue';
-import {RouteRecordRaw} from 'vue-router';
+import { ElMenuItem, ElSubMenu } from 'element-plus';
+import { defineComponent, PropType, ref } from 'vue';
+import { RouteRecordRaw } from 'vue-router';
 function registerIcon() {
     const icon: any = {};
     for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
@@ -39,8 +39,8 @@ export default defineComponent({
         };
     },
     props: {
-        item: {type: Object as PropType<RouteRecordRaw>, required: true},
-        basePath: {type: String, required: true}
+        item: { type: Object as PropType<RouteRecordRaw>, required: true },
+        basePath: { type: String, required: true }
     },
     name: 'SidebarItem',
     components: {

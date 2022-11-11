@@ -2,11 +2,11 @@
     <div class="view" ref="containerRef"></div>
 </template>
 <script>
-import {initStats} from '@/util';
+import { initStats } from '@/util';
 import * as dat from 'dat.gui';
 import * as THREE from 'three';
 import TrackballControls from 'three-trackballcontrols';
-import {defineComponent, ref} from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
     setup() {
@@ -65,15 +65,15 @@ export default defineComponent({
                 ambientColor: ambientLight.color.getStyle(),
                 disableSpotlight: false
             };
-            this.gui.add(controls, 'intensity', 0, 3, 0.1).onChange(function(e) {
+            this.gui.add(controls, 'intensity', 0, 3, 0.1).onChange(function (e) {
                 ambientLight.color = new THREE.Color(controls.ambientColor);
                 ambientLight.intensity = controls.intensity;
             });
-            this.gui.addColor(controls, 'ambientColor').onChange(function(e) {
+            this.gui.addColor(controls, 'ambientColor').onChange(function (e) {
                 ambientLight.color = new THREE.Color(controls.ambientColor);
                 ambientLight.intensity = controls.intensity;
             });
-            this.gui.add(controls, 'disableSpotlight').onChange(function(e) {
+            this.gui.add(controls, 'disableSpotlight').onChange(function (e) {
                 spotLight.visible = !e;
             });
 

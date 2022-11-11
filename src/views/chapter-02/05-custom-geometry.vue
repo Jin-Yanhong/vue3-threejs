@@ -5,8 +5,8 @@
 import * as dat from 'dat.gui';
 import * as THREE from 'three';
 import TrackballControls from 'three-trackballcontrols';
-import {createMultiMaterialObject} from 'three/examples/jsm/utils/SceneUtils';
-import {defineComponent, ref} from 'vue';
+import { createMultiMaterialObject } from 'three/examples/jsm/utils/SceneUtils';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
     setup() {
@@ -61,10 +61,10 @@ export default defineComponent({
             const geometry = new THREE.BufferGeometry();
             const vertices = new Float32Array([1, 3, 1, 1, 3, -1, 1, -1, 1, 1, -1, -1, -1, 3, -1, -1, 3, 1, -1, -1, -1, -1, -1, 1]);
             geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
-            const material = new THREE.MeshBasicMaterial({color: 0xff0000});
+            const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
             const mesh = new THREE.Mesh(geometry, material);
             mesh.castShadow = true;
-            mesh.children.forEach(function(e) {
+            mesh.children.forEach(function (e) {
                 e.castShadow = true;
             });
             this.scene.add(mesh);
@@ -91,12 +91,12 @@ export default defineComponent({
             this.containerRef.appendChild(this.WebGLRenderer.domElement);
 
             const controls = {
-                clone: function() {
+                clone: function () {
                     const clonedGeometry = mesh.children[0].geometry.clone();
-                    const materials = [new THREE.MeshLambertMaterial({opacity: 0.8, color: 0xff44ff, transparent: true}), new THREE.MeshBasicMaterial({color: 0x000000, wireframe: true})];
+                    const materials = [new THREE.MeshLambertMaterial({ opacity: 0.8, color: 0xff44ff, transparent: true }), new THREE.MeshBasicMaterial({ color: 0x000000, wireframe: true })];
 
                     const mesh2 = createMultiMaterialObject(clonedGeometry, materials);
-                    mesh2.children.forEach(function(e) {
+                    mesh2.children.forEach(function (e) {
                         e.castShadow = true;
                     });
 

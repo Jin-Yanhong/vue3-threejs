@@ -9,6 +9,7 @@
     "bracketSameLine": false,
     "endOfLine": "crlf",
     "arrowParens": "avoid",
+    "trailingComma": "none",
     "overrides": [
         {
             "files": ["*.yml"],
