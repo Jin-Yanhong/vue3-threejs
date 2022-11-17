@@ -9,7 +9,7 @@ const chapter02: RouteRecordRaw = {
         title: 'Chapter - 02',
         icon: 'Folder',
         cache: true,
-        show: true
+        show: true,
     },
     children: [
         {
@@ -19,9 +19,9 @@ const chapter02: RouteRecordRaw = {
                 title: '01-basic-scene',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-02/01-basic-scene.vue')
+            component: () => import('@/views/chapter-02/01-basic-scene.vue'),
         },
         {
             path: '2',
@@ -30,9 +30,9 @@ const chapter02: RouteRecordRaw = {
                 title: '02-foggy-scene',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-02/02-foggy-scene.vue')
+            component: () => import('@/views/chapter-02/02-foggy-scene.vue'),
         },
         {
             path: '3',
@@ -41,9 +41,9 @@ const chapter02: RouteRecordRaw = {
                 title: '03-forced-materials',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-02/03-forced-materials.vue')
+            component: () => import('@/views/chapter-02/03-forced-materials.vue'),
         },
         {
             path: '4',
@@ -52,9 +52,9 @@ const chapter02: RouteRecordRaw = {
                 title: '04-geometries',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-02/04-geometries.vue')
+            component: () => import('@/views/chapter-02/04-geometries.vue'),
         },
         {
             path: '5',
@@ -63,9 +63,9 @@ const chapter02: RouteRecordRaw = {
                 title: '05-custom-geometry TODO',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-02/05-custom-geometry.vue')
+            component: () => import('@/views/chapter-02/05-custom-geometry.vue'),
         },
         {
             path: '6',
@@ -74,9 +74,9 @@ const chapter02: RouteRecordRaw = {
                 title: '06-mesh-properties',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-02/06-mesh-properties.vue')
+            component: () => import('@/views/chapter-02/06-mesh-properties.vue'),
         },
         {
             path: '7',
@@ -85,9 +85,9 @@ const chapter02: RouteRecordRaw = {
                 title: '07-both-cameras',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-02/07-both-cameras.vue')
+            component: () => import('@/views/chapter-02/07-both-cameras.vue'),
         },
         {
             path: '8',
@@ -96,11 +96,11 @@ const chapter02: RouteRecordRaw = {
                 title: '08-cameras-lookat',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-02/08-cameras-lookat.vue')
-        }
-    ]
+            component: () => import('@/views/chapter-02/08-cameras-lookat.vue'),
+        },
+    ],
 };
 
 export default chapter02;

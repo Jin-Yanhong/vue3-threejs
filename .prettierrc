@@ -9,7 +9,7 @@
     "bracketSameLine": false,
     "endOfLine": "crlf",
     "arrowParens": "avoid",
-    "trailingComma": "none",
+    "trailingComma": "es5",
     "overrides": [
         {
             "files": ["*.yml"],

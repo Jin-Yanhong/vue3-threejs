@@ -9,7 +9,7 @@ const chapter01: RouteRecordRaw = {
         title: 'Chapter - 01',
         icon: 'Folder',
         cache: true,
-        show: true
+        show: true,
     },
     children: [
         {
@@ -19,9 +19,9 @@ const chapter01: RouteRecordRaw = {
                 title: '02-first-scene',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-01/02-first-scene.vue')
+            component: () => import('@/views/chapter-01/02-first-scene.vue'),
         },
         {
             path: '3',
@@ -30,9 +30,9 @@ const chapter01: RouteRecordRaw = {
                 title: '03-materials-light',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-01/03-materials-light.vue')
+            component: () => import('@/views/chapter-01/03-materials-light.vue'),
         },
         {
             path: '4',
@@ -41,9 +41,9 @@ const chapter01: RouteRecordRaw = {
                 title: '04-materials-light-animation',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-01/04-materials-light-animation.vue')
+            component: () => import('@/views/chapter-01/04-materials-light-animation.vue'),
         },
         {
             path: '5',
@@ -52,11 +52,11 @@ const chapter01: RouteRecordRaw = {
                 title: '05-control-gui',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-01/05-control-gui.vue')
-        }
-    ]
+            component: () => import('@/views/chapter-01/05-control-gui.vue'),
+        },
+    ],
 };
 
 export default chapter01;

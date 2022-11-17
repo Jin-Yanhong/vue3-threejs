@@ -9,7 +9,7 @@ const chapter03: RouteRecordRaw = {
         title: 'Chapter - 03',
         icon: 'Folder',
         cache: true,
-        show: true
+        show: true,
     },
     children: [
         {
@@ -19,9 +19,9 @@ const chapter03: RouteRecordRaw = {
                 title: '01-ambient-light',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-03/01-ambient-light.vue')
+            component: () => import('@/views/chapter-03/01-ambient-light.vue'),
         },
         {
             path: '2',
@@ -30,9 +30,9 @@ const chapter03: RouteRecordRaw = {
                 title: '02-spot-light',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-03/02-spot-light.vue')
+            component: () => import('@/views/chapter-03/02-spot-light.vue'),
         },
         {
             path: '3',
@@ -41,9 +41,9 @@ const chapter03: RouteRecordRaw = {
                 title: '03-point-light',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-03/03-point-light.vue')
+            component: () => import('@/views/chapter-03/03-point-light.vue'),
         },
         {
             path: '4',
@@ -52,9 +52,9 @@ const chapter03: RouteRecordRaw = {
                 title: '04-directional-light',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-03/04-directional-light.vue')
+            component: () => import('@/views/chapter-03/04-directional-light.vue'),
         },
         {
             path: '5',
@@ -63,9 +63,9 @@ const chapter03: RouteRecordRaw = {
                 title: '05-hemisphere-light',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-03/05-hemisphere-light.vue')
+            component: () => import('@/views/chapter-03/05-hemisphere-light.vue'),
         },
         {
             path: '6',
@@ -74,9 +74,9 @@ const chapter03: RouteRecordRaw = {
                 title: '06-area-light TODO',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-03/06-area-light.vue')
+            component: () => import('@/views/chapter-03/06-area-light.vue'),
         },
         {
             path: '7',
@@ -85,11 +85,11 @@ const chapter03: RouteRecordRaw = {
                 title: '07-lensflares TODO',
                 icon: 'Document',
                 cache: true,
-                show: true
+                show: true,
             },
-            component: () => import('@/views/chapter-03/07-lensflares.vue')
-        }
-    ]
+            component: () => import('@/views/chapter-03/07-lensflares.vue'),
+        },
+    ],
 };
 
 export default chapter03;
