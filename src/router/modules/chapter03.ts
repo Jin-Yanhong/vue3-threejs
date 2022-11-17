@@ -71,12 +71,23 @@ const chapter03: RouteRecordRaw = {
             path: '6',
             name: '06-area-light',
             meta: {
-                title: '06-area-light',
+                title: '06-area-light TODO',
                 icon: 'Document',
                 cache: true,
                 show: true
             },
             component: () => import('@/views/chapter-03/06-area-light.vue')
+        },
+        {
+            path: '7',
+            name: '07-lensflares',
+            meta: {
+                title: '07-lensflares TODO',
+                icon: 'Document',
+                cache: true,
+                show: true
+            },
+            component: () => import('@/views/chapter-03/07-lensflares.vue')
         }
     ]
 };

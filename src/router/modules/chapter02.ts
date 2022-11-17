@@ -60,7 +60,7 @@ const chapter02: RouteRecordRaw = {
             path: '5',
             name: '05-custom-geometry',
             meta: {
-                title: '05-custom-geometry',
+                title: '05-custom-geometry TODO',
                 icon: 'Document',
                 cache: true,
                 show: true
