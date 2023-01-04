@@ -133,6 +133,17 @@ const chapter04: RouteRecordRaw = {
             },
             component: () => import('@/views/chapter-04/11-shader-material.vue'),
         },
+        {
+            path: '12',
+            name: '12-line-material',
+            meta: {
+                title: '12-line-material',
+                icon: 'Document',
+                cache: true,
+                show: true,
+            },
+            component: () => import('@/views/chapter-04/12-line-material.vue'),
+        },
     ],
 };
 
