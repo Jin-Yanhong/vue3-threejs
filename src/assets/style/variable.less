@@ -1,0 +1,74 @@
+@layout-gap: 10px;
+
+@during-link: 0.3s;
+
+@color-theme: #487eb0;
+@color-theme-active: #40739e;
+
+@color-light: #f5f6fa;
+@color-dark: #2f3640;
+@color-active: #fbc531;
+@color-hover: #dcdde1;
+@color-shadow: #7f8fa6;
+@color-menu-bg: color-theme;
+@color-menu-bg-active: @color-theme-active;
+@color-layout-bg-navbar: @color-theme;
+@color-layout-bg-sidebar: @color-theme;
+
+.mix-in-flex() {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.color() {
+    .text() {
+        .light() {
+            color: @color-light;
+        }
+        .dark() {
+            color: @color-dark;
+        }
+    }
+    .link() {
+        .normal() {
+            color: @color-light;
+        }
+        .hover() {
+            color: @color-active;
+        }
+        .visited() {
+            color: @color-light;
+        }
+        .active() {
+            color: @color-active;
+        }
+    }
+}
+
+.flex() {
+    .mix-in-flex();
+    .center() {
+        .mix-in-flex();
+        justify-content: center;
+        align-items: center;
+    }
+    .start() {
+        .mix-in-flex();
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .end() {
+        .mix-in-flex();
+        justify-content: right;
+        align-items: center;
+    }
+    .between() {
+        .mix-in-flex();
+        justify-content: space-between;
+        align-items: center;
+    }
+    .nowrap() {
+        .mix-in-flex();
+        flex-wrap: nowrap;
+    }
+}

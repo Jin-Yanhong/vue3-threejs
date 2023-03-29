@@ -1,28 +1,29 @@
 <template>
-    <div v-if="item.children">
-        <ElSubMenu :index="fatherPath">
-            <template v-slot:title>
-                <span>
-                    <el-icon color="#409EFC"> <component :is="item?.meta?.icon" /> </el-icon>
-                    <slot name="title"> {{ item.meta?.title }} </slot>
-                </span>
+    <template v-if="item?.children?.length as number > 1">
+        <ElSubMenu :index="basePath">
+            <template #title>
+                <el-icon> <component :is="item?.meta?.icon" /> </el-icon>
+                <span> {{ item.meta?.title }}</span>
             </template>
-            <SidebarItem v-for="child in item.children" :key="child.path" :item="child" :basePath="fatherPath" />
+            <SidebarItem v-for="child in item.children" v-bind:key="child.path" :item="child" :basePath="basePath" />
         </ElSubMenu>
-    </div>
-    <div v-else>
-        <ElMenuItem v-if="item.meta?.show" :index="routerPath(item)" @click="menuClick(item)">
-            <el-icon color="#409EFC"> <component :is="item?.meta?.icon" /> </el-icon>
-            <span> {{ item?.meta.title }} </span>
+    </template>
+    <template v-else>
+        <ElMenuItem v-show="item.meta?.show" :index="resolvePath([basePath, '/', item.path])">
+            <el-icon> <component :is="item?.meta?.icon" /> </el-icon>
+            <template #title>
+                <span> {{ item.meta?.title }} </span>
+            </template>
         </ElMenuItem>
-    </div>
+    </template>
 </template>
 
 <script lang="ts">
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 import { ElMenuItem, ElSubMenu } from 'element-plus';
-import { defineComponent, PropType, ref } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { RouteRecordRaw } from 'vue-router';
+
 function registerIcon() {
     const icon: any = {};
     for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
@@ -32,32 +33,23 @@ function registerIcon() {
 }
 
 export default defineComponent({
-    setup(props: any) {
-        const fatherPath = ref(props.basePath);
-        return {
-            fatherPath
-        };
-    },
     props: {
         item: { type: Object as PropType<RouteRecordRaw>, required: true },
-        basePath: { type: String, required: true }
+        basePath: { type: String, required: true },
     },
     name: 'SidebarItem',
     components: {
         ElSubMenu,
         ElMenuItem,
-        ...registerIcon()
+        ...registerIcon(),
     },
-
     methods: {
-        routerPath(item: RouteRecordRaw): string {
-            const path = this.fatherPath === '/' ? '/' + item.path : this.fatherPath + '/' + item.path;
-            return path;
+        resolvePath(paths: string[]): string {
+            const pathNode: string[] = paths.join('').replace(/\//g, ' ').split(' ');
+            const result: string = Array.from(new Set(pathNode)).join('/') || '/';
+            return result;
         },
-        menuClick(item: RouteRecordRaw) {
-            this.$router.push(this.routerPath(item));
-        }
-    }
+    },
 });
 </script>
 

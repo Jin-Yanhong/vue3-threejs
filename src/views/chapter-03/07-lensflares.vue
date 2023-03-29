@@ -2,13 +2,13 @@
     <div class="view" ref="containerRef"></div>
 </template>
 <script>
-import { initStats } from '@/util';
+import { initStats } from '@/three.util';
 import * as dat from 'dat.gui';
 import * as THREE from 'three';
 import TrackballControls from 'three-trackballcontrols';
 import { defineComponent, ref } from 'vue';
 import { Lensflare, LensflareElement } from 'three/examples/jsm/objects/Lensflare';
-
+import { windowSize } from '@/utils/constant';
 export default defineComponent({
     setup() {
         const containerRef = ref();
@@ -32,8 +32,8 @@ export default defineComponent({
         init() {
             const stats = initStats();
 
-            const innerWidth = window.innerWidth - 300;
-            const innerHeight = window.innerHeight;
+            const innerWidth = windowSize.innerWidth;
+            const innerHeight = windowSize.innerHeight;
 
             const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 1000);
             camera.position.x = -20;
@@ -201,7 +201,7 @@ export default defineComponent({
             this.WebGLRenderer.dispose();
             this.gui.destroy();
             const panelGroup = document.querySelector('#panelGroup');
-            document.body.removeChild(panelGroup);
+            document.querySelector('[class=\'view\']').removeChild(panelGroup);
         }
     }
 });

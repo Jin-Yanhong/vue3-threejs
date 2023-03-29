@@ -1,0 +1,28 @@
+@import './variable.less';
+
+.noGap() {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: @color-light;
+    text-decoration: none;
+
+    &:hover {
+        transition: @during-link;
+        .color.link.hover();
+    }
+}
+
+ul {
+    .noGap();
+    li {
+        list-style: none;
+        .noGap();
+    }
+}
+
+body {
+    position: relative;
+}

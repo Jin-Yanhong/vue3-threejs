@@ -13,12 +13,30 @@
         "useDefineForClassFields": true,
         "sourceMap": true,
         "baseUrl": ".",
-        "types": ["webpack-env", "jest"],
+        "types": [
+            "webpack-env",
+            "@types/nprogress",
+            "element-plus/global",
+        ],
         "paths": {
-            "@/*": ["src/*"]
+            "@/*": [
+                "src/*"
+            ]
         },
-        "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable",
+            "scripthost"
+        ]
     },
-    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts", "tests/**/*.tsx", "src/util/Stats.js"],
-    "exclude": ["node_modules", "*.js"]
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+    ],
+    "exclude": [
+        "node_modules",
+        "*.js"
+    ]
 }

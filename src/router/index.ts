@@ -1,42 +1,84 @@
+import useUserStore from '@/store/user';
 import NProgress from 'nprogress';
+import { ElMessage } from 'element-plus';
 import { createRouter, createWebHashHistory, RouteLocationNormalized, RouteRecordRaw } from 'vue-router';
+import { chapter01 } from './modules/chapter01';
+import { chapter02 } from './modules/chapter02';
+import { chapter03 } from './modules/chapter03';
+import { chapter04 } from './modules/chapter04';
 
 import 'nprogress/nprogress.css';
 
-import chapter01 from './modules/chapter01';
-import chapter02 from './modules/chapter02';
-import chapter03 from './modules/chapter03';
-import chapter04 from './modules/chapter04';
+const whiteList = ['/login'];
 
 export const routes: Array<RouteRecordRaw> = [
-    chapter01,
-    chapter02,
-    chapter03,
-    chapter04,
-    // 匹配不到页面返回 dashboard
+    {
+        path: '/login',
+        name: 'login',
+        meta: {
+            title: '登录',
+            cache: true,
+            show: false,
+        },
+        component: () => import('@/views/Login/index.vue'),
+    },
+    {
+        path: '/',
+        name: 'dashboard',
+        redirect: '/chapter-01/2',
+    },
+    ...chapter01,
+    ...chapter02,
+    ...chapter03,
+    ...chapter04,
+    {
+        path: '/redirect',
+        component: () => import('@/views/Redirect/index.vue'),
+    },
+    {
+        path: '/404',
+        component: () => import('@/views/ErrorPage/4xx.vue'),
+    },
     {
         path: '/:pathMatch(.*)*',
-        name: 'redirect',
-        redirect: '/chapter-01/2',
-        meta: {
-            show: false
-        }
-    }
+        redirect: '/404',
+    },
 ];
 
 const router = createRouter({
-    history: createWebHashHistory(process.env.BASE_URL),
-    routes
+    history: createWebHashHistory(),
+    routes,
 });
 
 router.beforeEach(async (to: RouteLocationNormalized, from: RouteLocationNormalized, next) => {
     NProgress.start();
-    next();
-    NProgress.done();
+    if (useUserStore().getToken) {
+        if (to.path === '/login') {
+            next({ path: '/' });
+            NProgress.done();
+        } else {
+            try {
+                next();
+            } catch (err: any) {
+                useUserStore().handleLogout();
+                ElMessage.error(err.message);
+                next('/login');
+                NProgress.done();
+            }
+        }
+    } else {
+        if (whiteList.indexOf(to.path) !== -1) {
+            next();
+        } else {
+            next(`/login?redirect=${to.path}`);
+            NProgress.done();
+        }
+    }
 });
 
 router.afterEach((to: RouteLocationNormalized) => {
     NProgress.done();
-    document.title = 'Vue3 💕 Three.js' + ' | ' + to.meta?.title;
+    document.title = `智慧城市 - ${to.meta?.title}`;
 });
+
 export default router;

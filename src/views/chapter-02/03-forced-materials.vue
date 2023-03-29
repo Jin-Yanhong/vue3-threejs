@@ -2,11 +2,12 @@
     <div class="view" ref="containerRef"></div>
 </template>
 <script>
-import { initStats } from '@/util';
+import { initStats } from '@/three.util';
 import * as dat from 'dat.gui';
 import * as THREE from 'three';
 import TrackballControls from 'three-trackballcontrols';
 import { defineComponent, ref } from 'vue';
+import { windowSize } from '@/utils/constant';
 
 export default defineComponent({
     setup() {
@@ -15,13 +16,13 @@ export default defineComponent({
         const WebGLRenderer = new THREE.WebGLRenderer();
         const gui = new dat.GUI();
         scene.overrideMaterial = new THREE.MeshLambertMaterial({
-            color: 0xffffff
+            color: 0xffffff,
         });
         return {
             containerRef,
             scene,
             WebGLRenderer,
-            gui
+            gui,
         };
     },
     mounted() {
@@ -34,8 +35,8 @@ export default defineComponent({
         init() {
             const stats = initStats();
 
-            const innerWidth = window.innerWidth - 300;
-            const innerHeight = window.innerHeight;
+            const innerWidth = windowSize.innerWidth;
+            const innerHeight = windowSize.innerHeight;
 
             const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 1000);
             camera.position.x = -40;
@@ -49,7 +50,7 @@ export default defineComponent({
 
             const planeGeometry = new THREE.PlaneGeometry(60, 40, 1, 1);
             const planeMaterial = new THREE.MeshLambertMaterial({
-                color: 0xffffff
+                color: 0xffffff,
             });
             const plane = new THREE.Mesh(planeGeometry, planeMaterial);
             plane.receiveShadow = true;
@@ -92,7 +93,7 @@ export default defineComponent({
                     const cubeSize = Math.ceil(Math.random() * 3);
                     const cubeGeometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
                     const cubeMaterial = new THREE.MeshLambertMaterial({
-                        color: Math.random() * 0xffffff
+                        color: Math.random() * 0xffffff,
                     });
                     const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
                     cube.castShadow = true;
@@ -108,7 +109,7 @@ export default defineComponent({
 
                 outputObjects: function () {
                     console.log(_this.scene.children);
-                }
+                },
             };
 
             this.gui.add(controls, 'rotationSpeed', 0, 0.5);
@@ -141,9 +142,9 @@ export default defineComponent({
             this.WebGLRenderer.dispose();
             this.gui.destroy();
             const panelGroup = document.querySelector('#panelGroup');
-            document.body.removeChild(panelGroup);
-        }
-    }
+            document.querySelector("[class='view']").removeChild(panelGroup);
+        },
+    },
 });
 </script>
 <style lang="scss" scoped></style>

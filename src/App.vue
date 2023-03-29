@@ -1,11 +1,10 @@
 <template>
     <router-view />
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import { provide } from 'vue';
+import { windowSize } from './utils/constant';
 
-export default defineComponent({
-    name: 'App'
-});
+provide('windowSize', windowSize);
 </script>
 <style lang="scss"></style>

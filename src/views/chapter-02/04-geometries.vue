@@ -9,7 +9,7 @@ import { ParametricGeometries } from 'three/examples/jsm/geometries/ParametricGe
 import { ParametricGeometry } from 'three/examples/jsm/geometries/ParametricGeometry';
 import { createMultiMaterialObject } from 'three/examples/jsm/utils/SceneUtils';
 import { defineComponent, ref } from 'vue';
-
+import { windowSize } from '@/utils/constant';
 export default defineComponent({
     setup() {
         const containerRef = ref();
@@ -29,8 +29,8 @@ export default defineComponent({
     },
     methods: {
         init() {
-            const innerWidth = window.innerWidth - 300;
-            const innerHeight = window.innerHeight;
+            const innerWidth = windowSize.innerWidth;
+            const innerHeight = windowSize.innerHeight;
 
             const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 1000);
 

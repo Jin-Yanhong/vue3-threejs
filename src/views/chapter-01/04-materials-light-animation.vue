@@ -2,9 +2,10 @@
     <div class="view" ref="containerRef"></div>
 </template>
 <script>
-import { initStats } from '@/util';
+import { initStats } from '@/three.util';
 import * as THREE from 'three';
 import { defineComponent, ref } from 'vue';
+import { windowSize } from '@/utils/constant';
 
 export default defineComponent({
     setup() {
@@ -27,8 +28,8 @@ export default defineComponent({
         init() {
             const stats = initStats();
 
-            const innerWidth = window.innerWidth - 300;
-            const innerHeight = window.innerHeight;
+            const innerWidth = windowSize.innerWidth;
+            const innerHeight = windowSize.innerHeight;
 
             const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 1000);
 
@@ -114,7 +115,7 @@ export default defineComponent({
         depose() {
             this.WebGLRenderer.dispose();
             const panelGroup = document.querySelector('#panelGroup');
-            document.body.removeChild(panelGroup);
+            document.querySelector('[class=\'view\']').removeChild(panelGroup);
         }
     }
 });

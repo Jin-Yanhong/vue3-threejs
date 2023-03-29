@@ -2,12 +2,12 @@
     <div class="view" ref="containerRef"></div>
 </template>
 <script>
-import { initStats } from '@/util';
+import { initStats } from '@/three.util';
 import * as dat from 'dat.gui';
 import * as THREE from 'three';
 import TrackballControls from 'three-trackballcontrols';
 import { defineComponent, ref } from 'vue';
-
+import { windowSize } from '@/utils/constant';
 export default defineComponent({
     setup() {
         const containerRef = ref();
@@ -37,8 +37,8 @@ export default defineComponent({
     },
     methods: {
         init() {
-            const innerWidth = window.innerWidth - 300;
-            const innerHeight = window.innerHeight;
+            const innerWidth = windowSize.innerWidth;
+            const innerHeight = windowSize.innerHeight;
 
             this.camera.position.x = 120;
             this.camera.position.y = 60;
@@ -124,7 +124,7 @@ export default defineComponent({
             this.WebGLRenderer.dispose();
             this.gui.destroy();
             const panelGroup = document.querySelector('#panelGroup');
-            document.body.removeChild(panelGroup);
+            document.querySelector('[class=\'view\']').removeChild(panelGroup);
             this.trackballControls.dispose();
         },
         initTrackballControls(camera, renderer) {

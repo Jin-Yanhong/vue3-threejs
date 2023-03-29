@@ -1,3 +1,4 @@
+const path = require('path');
 const { defineConfig } = require('@vue/cli-service');
 
 module.exports = defineConfig({
@@ -23,6 +24,20 @@ module.exports = defineConfig({
     configureWebpack: {
         experiments: {
             topLevelAwait: true
+        },
+        resolve: {
+            alias: {
+                '@/': path.resolve(__dirname, 'src/')
+            }
         }
+    },
+    chainWebpack: config => {
+        // Config Less Loader
+        config.module
+            .rule('**/*.less')
+            .test(/\.less$/i)
+            .use('less-loader')
+            .loader('less-loader')
+            .end();
     }
 });
