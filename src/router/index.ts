@@ -6,9 +6,10 @@ import { chapter01 } from './modules/chapter01';
 import { chapter02 } from './modules/chapter02';
 import { chapter03 } from './modules/chapter03';
 import { chapter04 } from './modules/chapter04';
-
+import settings from '@/settings';
 import 'nprogress/nprogress.css';
 
+const appName = settings.appConfig.name;
 const whiteList = ['/login'];
 
 export const routes: Array<RouteRecordRaw> = [
@@ -78,7 +79,7 @@ router.beforeEach(async (to: RouteLocationNormalized, from: RouteLocationNormali
 
 router.afterEach((to: RouteLocationNormalized) => {
     NProgress.done();
-    document.title = `智慧城市 - ${to.meta?.title}`;
+    document.title = `${appName} - ${to.meta?.title}`;
 });
 
 export default router;
