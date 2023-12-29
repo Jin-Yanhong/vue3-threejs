@@ -19,15 +19,15 @@ export default defineComponent({
         const sidebarWidth = ref<string>(settings.appConfig.layOut.menuWidth);
 
         return {
-            sidebarWidth
+            sidebarWidth,
         };
     },
     name: 'Layout',
     components: {
         Sidebar,
         Navbar,
-        AppMain
-    }
+        AppMain,
+    },
 });
 </script>
 <style lang="less" scoped>

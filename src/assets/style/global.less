@@ -1,42 +1,48 @@
 @import './variable.less';
 
 .layout {
-    padding: 0;
+	padding: 0;
 }
 
 .view {
-    padding: @layout-gap;
-    height: calc(100% - @layout-gap * 2 - 64px);
+	padding: @layout-gap;
+	height: calc(100% - 52px);
 }
 
 .flex {
-    .flex();
-    &-center {
-        .flex.center();
-    }
-    &-start {
-        .flex.start();
-    }
-    &-end {
-        .flex.end();
-    }
-    &-between {
-        .flex.between();
-    }
-    &-nowrap {
-        .flex.nowrap();
-    }
+	.flex();
+
+	&-center {
+		.flex.center();
+	}
+
+	&-start {
+		.flex.start();
+	}
+
+	&-end {
+		.flex.end();
+	}
+
+	&-between {
+		.flex.between();
+	}
+
+	&-nowrap {
+		.flex.nowrap();
+	}
 }
 
 .customerNProgress {
-    height: 20px;
-    background: red;
+	height: 20px;
+	background: red;
 }
 
 .scrollY {
-    overflow-y: auto;
-    ::-webkit-scrollbar {
-        width: 4px;
-        background: @color-shadow;
-    }
+	overflow-y: auto;
+
+	::-webkit-scrollbar {
+		width: 4px;
+		background: @color-shadow;
+	}
 }

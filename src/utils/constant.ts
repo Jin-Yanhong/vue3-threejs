@@ -10,5 +10,5 @@ export enum requestCode {
 
 export enum windowSize {
     innerWidth = window.innerWidth - 342,
-    innerHeight = window.innerHeight - 142,
+    innerHeight = window.innerHeight - 110,
 }
